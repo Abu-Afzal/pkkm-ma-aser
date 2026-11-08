@@ -560,7 +560,7 @@ window.saveAssignment = function(indikatorId, btn) {
 };
 
 window.setupDataPKKM = function() {
-    if (!checkAdminAccess() || !confirm('Isi database dengan indikator + sub-bukti PKKM lengkap untuk MA. As\'adiyah Ereng-Ereng?')) return;
+    if (!checkAdminAccess() || !confirm('Isi database dengan 109 indikator PKKM lengkap untuk MA. As\'adiyah Ereng-Ereng?')) return;
     
     var aspekList = [
         { kode: 'A', nama: 'Usaha Pengembangan Madrasah' },
@@ -582,6 +582,7 @@ window.setupDataPKKM = function() {
     var timE = ['Andi Arifuddin Nowa S.Sos'];
 
     var indikatorList = [
+        // DIMENSI A - USAHA PENGEMBANGAN MADRASAH
         { aspek_id: 'aspek_A', kode: 'A.1.1.1', pertanyaan: 'Mampu mengembangkan struktur organisasi yang sesuai dengan kebutuhan program.', bukti_list: [
             { id: 'A.1.1.1.1', nama: 'Bagan/struktur organisasi' },
             { id: 'A.1.1.1.2', nama: 'Notulen rapat keputusan tentang penyusunan struktur organisasi' },
@@ -605,21 +606,527 @@ window.setupDataPKKM = function() {
             { id: 'A.1.2.1.4', nama: 'Data alumni' },
             { id: 'A.1.2.1.5', nama: 'RKJM' }
         ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.2.2', pertanyaan: 'Mampu membangun tim kerja yang efektif.', bukti_list: [
+            { id: 'A.1.2.2.1', nama: 'Bagan/struktur organisasi' },
+            { id: 'A.1.2.2.2', nama: 'SK' },
+            { id: 'A.1.2.2.3', nama: 'Tugas dan fungsi' },
+            { id: 'A.1.2.2.4', nama: 'Pedoman monitoring dan evaluasi kerja' },
+            { id: 'A.1.2.2.5', nama: 'Pedoman reward dan punishment' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.2.3', pertanyaan: 'Mampu menerapkan teknik pembaharuan dalam pengelolaan pembelajaran.', bukti_list: [
+            { id: 'A.1.2.3.1', nama: 'Dokumen kurikulum' },
+            { id: 'A.1.2.3.2', nama: 'Kalender pendidikan' },
+            { id: 'A.1.2.3.3', nama: 'Perangkat pembelajaran' },
+            { id: 'A.1.2.3.4', nama: 'Penilaian' },
+            { id: 'A.1.2.3.5', nama: 'Peraturan akademik' },
+            { id: 'A.1.2.3.6', nama: 'Notulen diskusi evaluasi rutin pembelajaran' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.2.4', pertanyaan: 'Mampu mengembangkan potensi dan meningkatkan prestasi madrasah.', bukti_list: [
+            { id: 'A.1.2.4.1', nama: 'Data prestasi madrasah 1 tahun terakhir' },
+            { id: 'A.1.2.4.2', nama: 'Data hasil UN 1 tahun terakhir' },
+            { id: 'A.1.2.4.3', nama: 'Dokumen akreditasi' },
+            { id: 'A.1.2.4.4', nama: 'Program ekstrakurikuler' },
+            { id: 'A.1.2.4.5', nama: 'Program unggulan madrasah' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.3.1', pertanyaan: 'Merencanakan kerjasama dengan lembaga pemerintah, swasta dan masyarakat.', bukti_list: [
+            { id: 'A.1.3.1.1', nama: 'SK komite madrasah' },
+            { id: 'A.1.3.1.2', nama: 'AD/ART komite madrasah' },
+            { id: 'A.1.3.1.3', nama: 'Program kerja komite madrasah' },
+            { id: 'A.1.3.1.4', nama: 'Laporan kegiatan komite madrasah' },
+            { id: 'A.1.3.1.5', nama: 'Dokumen tertulis kerja sama (MoU)' },
+            { id: 'A.1.3.1.6', nama: 'Foto-foto' },
+            { id: 'A.1.3.1.7', nama: 'Sertifikat/plakat kerja sama' },
+            { id: 'A.1.3.1.8', nama: 'Laporan kegiatan' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.3.2', pertanyaan: 'Melakukan pendekatan untuk mendapatkan dukungan dari lembaga.', bukti_list: [
+            { id: 'A.1.3.2.1', nama: 'Program kegiatan kerjasama' },
+            { id: 'A.1.3.2.2', nama: 'Foto kegiatan' },
+            { id: 'A.1.3.2.3', nama: 'Jadwal kegiatan' },
+            { id: 'A.1.3.2.4', nama: 'Laporan kegiatan' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.3.3', pertanyaan: 'Memanfaatkan dan memelihara hubungan kerjasama.', bukti_list: [
+            { id: 'A.1.3.3.1', nama: 'Laporan kegiatan kerja' },
+            { id: 'A.1.3.3.2', nama: 'Laporan monitoring/evaluasi kegiatan' },
+            { id: 'A.1.3.3.3', nama: 'Dokumentasi foto/video pelaksanaan kerjasama' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.4.1', pertanyaan: 'Mengaplikasikan pengembangan kurikulum sesuai standar isi.', bukti_list: [
+            { id: 'A.1.4.1.1', nama: 'Kurikulum' },
+            { id: 'A.1.4.1.2', nama: 'Kalender pendidikan' },
+            { id: 'A.1.4.1.3', nama: 'Perangkat pembelajaran' },
+            { id: 'A.1.4.1.4', nama: 'Pedoman penilaian' },
+            { id: 'A.1.4.1.5', nama: 'Peraturan akademik' },
+            { id: 'A.1.4.1.6', nama: 'Buku kerja guru' },
+            { id: 'A.1.4.1.7', nama: 'Dokumen rapat penyusunan kurikulum (daftar hadir, daftar peserta, foto)' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.4.2', pertanyaan: 'Mengaplikasikan pengembangan proses pembelajaran sesuai standar proses.', bukti_list: [
+            { id: 'A.1.4.2.1', nama: 'Dokumen pengembangan silabus' },
+            { id: 'A.1.4.2.2', nama: 'RPP' },
+            { id: 'A.1.4.2.3', nama: 'Struktur Kurikulum' },
+            { id: 'A.1.4.2.4', nama: 'Pembagian jam mengajar' },
+            { id: 'A.1.4.2.5', nama: 'Jadwal mengajar' },
+            { id: 'A.1.4.2.6', nama: 'RPE' },
+            { id: 'A.1.4.2.7', nama: 'Buku teks' },
+            { id: 'A.1.4.2.8', nama: 'Jurnal mengajar guru' },
+            { id: 'A.1.4.2.9', nama: 'Data siswa per kelas' },
+            { id: 'A.1.4.2.10', nama: 'Dokumen supervisi (laporan pemantauan, laporan supervisi, laporan evaluasi, rencana tindak lanjut)' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.4.3', pertanyaan: 'Mengaplikasikan sistem penilaian pembelajaran sesuai standar penilaian.', bukti_list: [
+            { id: 'A.1.4.3.1', nama: 'Instrumen penilaian' },
+            { id: 'A.1.4.3.2', nama: 'Kisi-kisi soal' },
+            { id: 'A.1.4.3.3', nama: 'Kumpulan naskah soal' },
+            { id: 'A.1.4.3.4', nama: 'Analisis butir soal' },
+            { id: 'A.1.4.3.5', nama: 'Dokumen analisis hasil belajar siswa' },
+            { id: 'A.1.4.3.6', nama: 'Laporan hasil belajar siswa' },
+            { id: 'A.1.4.3.7', nama: 'Tindak lanjut hasil penilaian' },
+            { id: 'A.1.4.3.8', nama: 'Dokumen pelaksanaan PAS' },
+            { id: 'A.1.4.3.9', nama: 'Dokumen pelaksanaan PAT' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.4.4', pertanyaan: 'Melaksanakan penjaminan mutu pencapaian standar kompetensi lulusan.', bukti_list: [
+            { id: 'A.1.4.4.1', nama: 'Dokumen program kegiatan kesiswaan' },
+            { id: 'A.1.4.4.2', nama: 'Laporan kegiatan kesiswaan' },
+            { id: 'A.1.4.4.3', nama: 'Dokumentasi kegiatan kesiswaan' },
+            { id: 'A.1.4.4.4', nama: 'Laporan kegiatan pembiasaan siswa' },
+            { id: 'A.1.4.4.5', nama: 'Dokumen kegiatan literasi' },
+            { id: 'A.1.4.4.6', nama: 'Data rata-rata hasil ujian 2 tahun terakhir' },
+            { id: 'A.1.4.4.7', nama: 'Data prestasi akademik 2 tahun terakhir' },
+            { id: 'A.1.4.4.8', nama: 'Data prestasi non akademik 2 tahun terakhir' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.5.1', pertanyaan: 'Mampu mengelola laboratorium madrasah secara optimal.', bukti_list: [
+            { id: 'A.1.5.1.1', nama: 'Luas sesuai standar' },
+            { id: 'A.1.5.1.2', nama: 'Sarana pendukung laboratorium' },
+            { id: 'A.1.5.1.3', nama: 'Program kerja laboratorium' },
+            { id: 'A.1.5.1.4', nama: 'Jurnal dan laporan pengelolaan laboratorium' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.5.2', pertanyaan: 'Mampu mengelola perpustakaan madrasah.', bukti_list: [
+            { id: 'A.1.5.2.1', nama: 'Luas sesuai standar' },
+            { id: 'A.1.5.2.2', nama: 'Sarana pendukung' },
+            { id: 'A.1.5.2.3', nama: 'Daftar buku induk perpustakaan' },
+            { id: 'A.1.5.2.4', nama: 'Laporan pengelolaan perpustakaan' },
+            { id: 'A.1.5.2.5', nama: 'Program kerja perpustakaan' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.5.3', pertanyaan: 'Mampu mengelola usaha madrasah.', bukti_list: [
+            { id: 'A.1.5.3.1', nama: 'Data/laporan kegiatan usaha madrasah' },
+            { id: 'A.1.5.3.2', nama: 'Dokumentasi kegiatan (foto/video)' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.5.4', pertanyaan: 'Mampu mengelola koperasi madrasah.', bukti_list: [
+            { id: 'A.1.5.4.1', nama: 'Instrumen hasil praktik pembelajaran' },
+            { id: 'A.1.5.4.2', nama: 'Foto kegiatan praktik' },
+            { id: 'A.1.5.4.3', nama: 'AD/ART koperasi' },
+            { id: 'A.1.5.4.4', nama: 'Laporan RAT' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.6.1', pertanyaan: 'Memanfaatkan TIK dalam manajemen madrasah.', bukti_list: [
+            { id: 'A.1.6.1.1', nama: 'Fasilitas teknologi dan informasi' },
+            { id: 'A.1.6.1.2', nama: 'Sumber daya informasi' },
+            { id: 'A.1.6.1.3', nama: 'Website madrasah' },
+            { id: 'A.1.6.1.4', nama: 'Pedoman sistem informasi madrasah' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.6.2', pertanyaan: 'Memanfaatkan TIK dalam pembelajaran.', bukti_list: [
+            { id: 'A.1.6.2.1', nama: 'Ketersediaan komputer' },
+            { id: 'A.1.6.2.2', nama: 'Jaringan internet' },
+            { id: 'A.1.6.2.3', nama: 'Website madrasah' },
+            { id: 'A.1.6.2.4', nama: 'Alamat email madrasah' },
+            { id: 'A.1.6.2.5', nama: 'Pemanfaatan TIK untuk pembelajaran (observasi/wawancara)' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.6.3', pertanyaan: 'Memanfaatkan TIK dalam menjalin kerjasama.', bukti_list: [
+            { id: 'A.1.6.3.1', nama: 'Pengelola SIM' },
+            { id: 'A.1.6.3.2', nama: 'Fasilitas SIM' },
+            { id: 'A.1.6.3.3', nama: 'Surat tugas pengelola SIM' },
+            { id: 'A.1.6.3.4', nama: 'Pelaporan data dan informasi' },
+            { id: 'A.1.6.3.5', nama: 'Program promosi' },
+            { id: 'A.1.6.3.6', nama: 'Observasi dan wawancara' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.6.4', pertanyaan: 'Memanfaatkan TIK dalam promosi program madrasah.', bukti_list: [
+            { id: 'A.1.6.4.1', nama: 'Pengelola SIM' },
+            { id: 'A.1.6.4.2', nama: 'Fasilitas SIM' },
+            { id: 'A.1.6.4.3', nama: 'Surat tugas pengelola SIM' },
+            { id: 'A.1.6.4.4', nama: 'Pelaporan data dan informasi' },
+            { id: 'A.1.6.4.5', nama: 'Program informasi' },
+            { id: 'A.1.6.4.6', nama: 'Observasi dan wawancara' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.7.1', pertanyaan: 'Mampu mengembangkan sistem administrasi pengelolaan dengan TIK.', bukti_list: [
+            { id: 'A.1.7.1.1', nama: 'Jumlah komputer dan LCD yang cukup' },
+            { id: 'A.1.7.1.2', nama: 'Memiliki jaringan internet' },
+            { id: 'A.1.7.1.3', nama: 'Memiliki web sekolah' },
+            { id: 'A.1.7.1.4', nama: 'Memiliki email madrasah' },
+            { id: 'A.1.7.1.5', nama: 'Laporan absensi elektronik' },
+            { id: 'A.1.7.1.6', nama: 'Dokumen lain pemanfaatan TIK untuk administrasi madrasah' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.7.2', pertanyaan: 'Mengelola administrasi pembelajaran dengan TIK.', bukti_list: [
+            { id: 'A.1.7.2.1', nama: 'Jumlah komputer dan LCD yang cukup' },
+            { id: 'A.1.7.2.2', nama: 'Memiliki jaringan internet' },
+            { id: 'A.1.7.2.3', nama: 'Pemanfaatan TIK untuk pembelajaran (Edmodo, Google Classroom, dll)' },
+            { id: 'A.1.7.2.4', nama: 'Pengelolaan penilaian secara online' }
+        ], penugasan: timA },
+        { aspek_id: 'aspek_A', kode: 'A.1.7.3', pertanyaan: 'Mampu mengembangkan sistem pengelolaan perpustakaan dengan TIK.', bukti_list: [
+            { id: 'A.1.7.3.1', nama: 'Katalog' },
+            { id: 'A.1.7.3.2', nama: 'BSE' },
+            { id: 'A.1.7.3.3', nama: 'Akses internet' },
+            { id: 'A.1.7.3.4', nama: 'Komputer' },
+            { id: 'A.1.7.3.5', nama: 'Dokumen aplikasi layanan perpustakaan' }
+        ], penugasan: timA },
+        
+        // DIMENSI B - PELAKSANAAN TUGAS MANAJERIAL
         { aspek_id: 'aspek_B', kode: 'B.2.1.1', pertanyaan: 'Mampu mengembangkan RKJM, RKT/RKAM berdasarkan evaluasi 8 SNP.', bukti_list: [
             { id: 'B.2.1.1.1', nama: 'Dokumen Evaluasi diri madrasah' },
             { id: 'B.2.1.1.2', nama: 'Dokumen RKJM dan RKT berbasis SDM' }
         ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.1.2', pertanyaan: 'Mampu merumuskan visi-misi sebagai arah pengembangan.', bukti_list: [
+            { id: 'B.2.1.2.1', nama: 'Visi misi yang telah ditetapkan oleh Kamad' },
+            { id: 'B.2.1.2.2', nama: 'Berita acara dan daftar hadir kegiatan perumusan/peninjauan kembali dan penetapan visi misi' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.1.3', pertanyaan: 'Mampu menentukan strategi pencapaian tujuan madrasah.', bukti_list: [
+            { id: 'B.2.1.3.1', nama: 'Program kerja' },
+            { id: 'B.2.1.3.2', nama: 'RKJM dan RKTM' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.1.4', pertanyaan: 'Mampu menyusun program dengan rencana evaluasi.', bukti_list: [
+            { id: 'B.2.1.4.1', nama: 'RKJM dan RKTM' },
+            { id: 'B.2.1.4.2', nama: 'Rencana/program evaluasi dan monitoring' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.2.1', pertanyaan: 'Mampu memberi contoh berdisiplin.', bukti_list: [
+            { id: 'B.2.2.1.1', nama: 'Daftar hadir elektronik kamad' },
+            { id: 'B.2.2.1.2', nama: 'Daftar hadir pada kegiatan di madrasah' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.2.2', pertanyaan: 'Mampu melaksanakan peraturan sesuai ketentuan.', bukti_list: [
+            { id: 'B.2.2.2.1', nama: 'Wawancara dengan warga madrasah' },
+            { id: 'B.2.2.2.2', nama: 'Laporan kehadiran' },
+            { id: 'B.2.2.2.3', nama: 'Notulen rapat/briefing pengarahan kegiatan' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.2.3', pertanyaan: 'Mampu menunjukkan keteladanan memanfaatkan sumber daya.', bukti_list: [
+            { id: 'B.2.2.3.1', nama: 'Wawancara dengan warga madrasah' },
+            { id: 'B.2.2.3.2', nama: 'Dokumen monitoring dan evaluasi pemanfaatan sumber belajar' },
+            { id: 'B.2.2.3.3', nama: 'Notulensi rapat/diskusi pemanfaatan sumber belajar' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.2.4', pertanyaan: 'Mampu menunjukkan kedisiplinan sebagai insan pembelajar.', bukti_list: [
+            { id: 'B.2.2.4.1', nama: 'Koleksi buku referensi/ilmu pengetahuan' },
+            { id: 'B.2.2.4.2', nama: 'Karya tulis yang diterbitkan atau tidak' },
+            { id: 'B.2.2.4.3', nama: 'Majalah/koran madrasah' },
+            { id: 'B.2.2.4.4', nama: 'Website madrasah' },
+            { id: 'B.2.2.4.5', nama: 'Blog pribadi' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.3.1', pertanyaan: 'Mampu menjadi contoh berbudaya mutu yang kompetitif.', bukti_list: [
+            { id: 'B.2.3.1.1', nama: 'Peningkatan KKM' },
+            { id: 'B.2.3.1.2', nama: 'Hasil UN' },
+            { id: 'B.2.3.1.3', nama: 'Program keunggulan dan inovasi akademik/non akademik' },
+            { id: 'B.2.3.1.4', nama: 'Data prestasi akademik dan non akademik' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.3.2', pertanyaan: 'Mampu melengkapi sarana prasarana untuk suasana belajar kondusif.', bukti_list: [
+            { id: 'B.2.3.2.1', nama: 'Observasi lingkungan madrasah (asri, bersih, rindang, aman, menyenangkan)' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.3.3', pertanyaan: 'Mampu memfasilitasi kegiatan budaya baca dan tulis.', bukti_list: [
+            { id: 'B.2.3.3.1', nama: 'Rencana dan laporan pelaksanaan kegiatan literasi' },
+            { id: 'B.2.3.3.2', nama: 'Dokumen kegiatan pengembangan budaya baca' },
+            { id: 'B.2.3.3.3', nama: 'Dokumen/pajangan hasil karya tulis siswa' },
+            { id: 'B.2.3.3.4', nama: 'Data kunjungan perpustakaan' },
+            { id: 'B.2.3.3.5', nama: 'Data peminjaman buku perpustakaan' },
+            { id: 'B.2.3.3.6', nama: 'Observasi/wawancara' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.3.4', pertanyaan: 'Mampu memfasilitasi kegiatan lomba akademik dan nonakademik.', bukti_list: [
+            { id: 'B.2.3.4.1', nama: 'Dokumen penyelenggaraan kegiatan kompetisi tingkat madrasah' },
+            { id: 'B.2.3.4.2', nama: 'Daftar perolehan piagam, penghargaan, piala, trofi perlombaan di semua jenjang' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.4.1', pertanyaan: 'Mampu menyusun perencanaan pengembangan pendidik dan tendik.', bukti_list: [
+            { id: 'B.2.4.1.1', nama: 'Program kerja kepala madrasah' },
+            { id: 'B.2.4.1.2', nama: 'Laporan kegiatan workshop/pelatihan kompetensi guru' },
+            { id: 'B.2.4.1.3', nama: 'Dokumentasi (foto/video) kegiatan workshop atau pelatihan guru' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.4.2', pertanyaan: 'Mampu melakukan pembinaan berkala untuk meningkatkan mutu SDM.', bukti_list: [
+            { id: 'B.2.4.2.1', nama: 'Buku/catatan pembinaan guru dan tendik' },
+            { id: 'B.2.4.2.2', nama: 'Notulen dan daftar hadir rapat pembinaan' },
+            { id: 'B.2.4.2.3', nama: 'Laporan kinerja kepala madrasah' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.4.3', pertanyaan: 'Memfasilitasi guru dan staf untuk meningkatkan kompetensi.', bukti_list: [
+            { id: 'B.2.4.3.1', nama: 'Buku/catatan pembinaan guru dan tendik' },
+            { id: 'B.2.4.3.2', nama: 'Notulen dan daftar hadir rapat pembinaan' },
+            { id: 'B.2.4.3.3', nama: 'Laporan kinerja kepala madrasah' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.4.4', pertanyaan: 'Memantau penerapan hasil pelatihan dalam pekerjaan.', bukti_list: [
+            { id: 'B.2.4.4.1', nama: 'Program pelatihan pengembangan profesi guru dan tendik' },
+            { id: 'B.2.4.4.2', nama: 'Laporan pelaksanaan pelatihan pengembangan profesi guru dan tendik' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.5.1', pertanyaan: 'Mampu mengelola fasilitas prasarana, perabot dan sarana.', bukti_list: [
+            { id: 'B.2.5.1.1', nama: 'Buku Inventaris' },
+            { id: 'B.2.5.1.2', nama: 'Buku pemeliharaan sarana dan prasarana' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.5.2', pertanyaan: 'Mampu mengelola perpustakaan madrasah.', bukti_list: [
+            { id: 'B.2.5.2.1', nama: 'Buku induk perpustakaan' },
+            { id: 'B.2.5.2.2', nama: 'Buku data grafik layanan perpustakaan' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.5.3', pertanyaan: 'Mampu mengelola laboratorium madrasah.', bukti_list: [
+            { id: 'B.2.5.3.1', nama: 'Daftar inventaris laboratorium' },
+            { id: 'B.2.5.3.2', nama: 'Buku/jurnal/data/grafik layanan laboratorium' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.5.4', pertanyaan: 'Mampu mengelola fasilitas penunjang madrasah lainnya.', bukti_list: [
+            { id: 'B.2.5.4.1', nama: 'Data fasilitas penunjang wirausaha yang dikelola oleh madrasah' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.6.1', pertanyaan: 'Menyusun perencanaan penerimaan dan pengembangan kompetensi peserta didik.', bukti_list: [
+            { id: 'B.2.6.1.1', nama: 'Dokumen program penerimaan peserta didik baru' },
+            { id: 'B.2.6.1.2', nama: 'Brosur' },
+            { id: 'B.2.6.1.3', nama: 'Data hasil analisis kemampuan peserta didik baru' },
+            { id: 'B.2.6.1.4', nama: 'Hasil psikotes minat bakat peserta didik baru' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.6.2', pertanyaan: 'Memiliki program pengembangan potensi diri dan prestasi.', bukti_list: [
+            { id: 'B.2.6.2.1', nama: 'Program pengembangan diri peserta didik akademik dan non akademik' },
+            { id: 'B.2.6.2.2', nama: 'Laporan pengembangan diri peserta didik akademik dan non akademik' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.6.3', pertanyaan: 'Memfasilitasi kegiatan pembiasaan melalui penanaman nilai-nilai.', bukti_list: [
+            { id: 'B.2.6.3.1', nama: 'Program kegiatan akademik dan non akademik dan laporan' },
+            { id: 'B.2.6.3.2', nama: 'Laporan kegiatan pembiasaan diri peserta didik' },
+            { id: 'B.2.6.3.3', nama: 'Dokumentasi kegiatan' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.6.4', pertanyaan: 'Memfasilitasi kegiatan pengembangan diri bagi peserta didik, pendidik, tendik.', bukti_list: [
+            { id: 'B.2.6.4.1', nama: 'Program kegiatan pengembangan diri' },
+            { id: 'B.2.6.4.2', nama: 'Dokumen kegiatan' },
+            { id: 'B.2.6.4.3', nama: 'Data prestasi siswa, guru, dan tendik' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.7.1', pertanyaan: 'Mampu mengarahkan pengembangan KTSP dalam IHT, Workshop, MGMP.', bukti_list: [
+            { id: 'B.2.7.1.1', nama: 'Dokumen kurikulum yang berlaku' },
+            { id: 'B.2.7.1.2', nama: 'SK tim pengembangan kurikulum' },
+            { id: 'B.2.7.1.3', nama: 'Dokumen penyusunan kurikulum (daftar hadir, berita acara, notulen)' },
+            { id: 'B.2.7.1.4', nama: 'Laporan kegiatan workshop/rakor pengembangan kurikulum' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.7.2', pertanyaan: 'Mampu mengendalikan pelaksanaan KTSP berlandaskan kalender pendidikan.', bukti_list: [
+            { id: 'B.2.7.2.1', nama: 'Struktur kurikulum' },
+            { id: 'B.2.7.2.2', nama: 'Jadwal pelajaran' },
+            { id: 'B.2.7.2.3', nama: 'Daftar hadir guru' },
+            { id: 'B.2.7.2.4', nama: 'Peraturan akademik' },
+            { id: 'B.2.7.2.5', nama: 'Kalender pendidikan' },
+            { id: 'B.2.7.2.6', nama: 'SK pembagian tugas mengajar' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.7.3', pertanyaan: 'Memfasilitasi efektivitas tim kerja guru.', bukti_list: [
+            { id: 'B.2.7.3.1', nama: 'Program KKG/MGMP di madrasah' },
+            { id: 'B.2.7.3.2', nama: 'Laporan pelaksanaan KKG/MGMP' },
+            { id: 'B.2.7.3.3', nama: 'Dokumentasi kegiatan (foto/video)' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.7.4', pertanyaan: 'Mampu mengembangkan pelayanan belajar yang inovatif.', bukti_list: [
+            { id: 'B.2.7.4.1', nama: 'Observasi kelas, studi dokumen, wawancara dengan siswa dan guru' },
+            { id: 'B.2.7.4.2', nama: 'Menelaah ragam metode, media, dan sumber belajar yang digunakan dalam RPP' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.7.5', pertanyaan: 'Memfasilitasi peserta didik dalam kolaborasi dan kompetisi.', bukti_list: [
+            { id: 'B.2.7.5.1', nama: 'Program, laporan, dan dokumen kegiatan kesiswaan (akademik dan non akademik)' },
+            { id: 'B.2.7.5.2', nama: 'Data prestasi akademik dan non akademik' },
+            { id: 'B.2.7.5.3', nama: 'Dokumentasi kegiatan (laporan, foto, video)' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.8.1', pertanyaan: 'Mampu merencanakan kebutuhan keuangan madrasah.', bukti_list: [
+            { id: 'B.2.8.1.1', nama: 'RKJM dan RKTM' },
+            { id: 'B.2.8.1.2', nama: 'Rencana anggaran' },
+            { id: 'B.2.8.1.3', nama: 'Laporan keuangan' },
+            { id: 'B.2.8.1.4', nama: 'Buku kas' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.8.2', pertanyaan: 'Mampu mengupayakan sumber-sumber keuangan dari luar.', bukti_list: [
+            { id: 'B.2.8.2.1', nama: 'RKJM dan RKTM' },
+            { id: 'B.2.8.2.2', nama: 'Laporan keuangan' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.8.3', pertanyaan: 'Mampu mengkoordinasikan pengelolaan keuangan sesuai peraturan.', bukti_list: [
+            { id: 'B.2.8.3.1', nama: 'RKJM dan RKTM' },
+            { id: 'B.2.8.3.2', nama: 'Laporan keuangan' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.8.4', pertanyaan: 'Mampu membuat laporan dan evaluasi pengelolaan keuangan.', bukti_list: [
+            { id: 'B.2.8.4.1', nama: 'RKJM dan RKTM' },
+            { id: 'B.2.8.4.2', nama: 'Laporan keuangan' },
+            { id: 'B.2.8.4.3', nama: 'Buku kas' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.9.1', pertanyaan: 'Mampu mengelola administrasi surat masuk dan keluar.', bukti_list: [
+            { id: 'B.2.9.1.1', nama: 'Dokumen surat masuk dan keluar' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.9.2', pertanyaan: 'Mampu mengelola administrasi madrasah.', bukti_list: [
+            { id: 'B.2.9.2.1', nama: 'Studi dokumen administrasi akademik, kesiswaan, sarana/prasarana, keuangan, dan hubungan madrasah dengan masyarakat' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.9.3', pertanyaan: 'Mampu mengelola administrasi kearsipan.', bukti_list: [
+            { id: 'B.2.9.3.1', nama: 'Administrasi madrasah' },
+            { id: 'B.2.9.3.2', nama: 'Arsip administrasi' },
+            { id: 'B.2.9.3.3', nama: 'SOP administrasi madrasah' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.9.4', pertanyaan: 'Mampu mengelola administrasi akreditasi.', bukti_list: [
+            { id: 'B.2.9.4.1', nama: 'Dokumen administrasi pemenuhan SNP madrasah' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.10.1', pertanyaan: 'Menyusun standar kinerja program pendidikan.', bukti_list: [
+            { id: 'B.2.10.1.1', nama: 'Dokumen SKP yang terukur' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.10.2', pertanyaan: 'Melakukan monitoring dan evaluasi kinerja.', bukti_list: [
+            { id: 'B.2.10.2.1', nama: 'Dokumen pelaksanaan monitoring dan evaluasi' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.10.3', pertanyaan: 'Menyusun laporan sesuai standar pelaporan monev.', bukti_list: [
+            { id: 'B.2.10.3.1', nama: 'Dokumen laporan pelaksanaan monitoring dan evaluasi' }
+        ], penugasan: timB },
+        { aspek_id: 'aspek_B', kode: 'B.2.10.4', pertanyaan: 'Merumuskan program tindak lanjut berdasarkan hasil evaluasi.', bukti_list: [
+            { id: 'B.2.10.4.1', nama: 'Dokumen laporan pelaksanaan monitoring dan evaluasi' }
+        ], penugasan: timB },
+        
+        // DIMENSI C - PENGEMBANGAN KEWIRAUSAHAAN
         { aspek_id: 'aspek_C', kode: 'C.3.1.1', pertanyaan: 'Memahami dan menghayati arti perubahan (inovasi) madrasah.', bukti_list: [
             { id: 'C.3.1.1.1', nama: 'Program pengembangan kewirausahaan' },
             { id: 'C.3.1.1.2', nama: 'Profil madrasah beberapa tahun terakhir' }
         ], penugasan: timC },
+        { aspek_id: 'aspek_C', kode: 'C.3.1.2', pertanyaan: 'Menggunakan metode, teknik dan proses perubahan.', bukti_list: [
+            { id: 'C.3.1.2.1', nama: 'Observasi: pemanfaatan hasil inovasi dan kreatifitas' },
+            { id: 'C.3.1.2.2', nama: 'Membudayakan hasil inovasi dan kreatifitas' },
+            { id: 'C.3.1.2.3', nama: 'Pengembangan pembudayaan inovasi dan kreatifitas' }
+        ], penugasan: timC },
+        { aspek_id: 'aspek_C', kode: 'C.3.1.3', pertanyaan: 'Menumbuhkan iklim kebebasan berpikir untuk inovasi.', bukti_list: [
+            { id: 'C.3.1.3.1', nama: 'Data jenis usaha produktif yang dimiliki' },
+            { id: 'C.3.1.3.2', nama: 'Program pengelolaan dan pendayagunaan hasil usaha' }
+        ], penugasan: timC },
+        { aspek_id: 'aspek_C', kode: 'C.3.1.4', pertanyaan: 'Mendorong warga madrasah melakukan prakarsa.', bukti_list: [
+            { id: 'C.3.1.4.1', nama: 'Data jenis usaha produktif yang dimiliki' },
+            { id: 'C.3.1.4.2', nama: 'Program pengelolaan dan pendayagunaan hasil usaha' }
+        ], penugasan: timC },
+        { aspek_id: 'aspek_C', kode: 'C.3.2.1', pertanyaan: 'Mampu bertindak kreatif dan inovatif.', bukti_list: [
+            { id: 'C.3.2.1.1', nama: 'RPP yang memuat rencana pembelajaran untuk menumbuhkan keterampilan berpikir kreatif, produktif, kritis, mandiri, kolaboratif, komunikatif' },
+            { id: 'C.3.2.1.2', nama: 'Hasil kerja dan karya siswa' },
+            { id: 'C.3.2.1.3', nama: 'Foto-foto aktifitas pembelajaran siswa' }
+        ], penugasan: timC },
+        { aspek_id: 'aspek_C', kode: 'C.3.2.2', pertanyaan: 'Mampu memberdayakan potensi madrasah secara optimal.', bukti_list: [
+            { id: 'C.3.2.2.1', nama: 'Rencana Pengembangan Madrasah (RPM)' },
+            { id: 'C.3.2.2.2', nama: 'Dokumen penanganan permasalahan/kasus' },
+            { id: 'C.3.2.2.3', nama: 'Dokumen hasil kegiatan sekolah' },
+            { id: 'C.3.2.2.4', nama: 'Dokumen hasil kegiatan pengembangan madrasah' }
+        ], penugasan: timC },
+        { aspek_id: 'aspek_C', kode: 'C.3.2.3', pertanyaan: 'Mampu menumbuhkan jiwa kewirausahaan.', bukti_list: [
+            { id: 'C.3.2.3.1', nama: 'Rencana Pengembangan Madrasah (RPM)' },
+            { id: 'C.3.2.3.2', nama: 'Dokumen penanganan permasalahan/kasus' },
+            { id: 'C.3.2.3.3', nama: 'Dokumen hasil kegiatan sekolah' },
+            { id: 'C.3.2.3.4', nama: 'Dokumen hasil kegiatan pengembangan madrasah' }
+        ], penugasan: timC },
+        { aspek_id: 'aspek_C', kode: 'C.3.2.4', pertanyaan: 'Mampu mencatat ide-ide baru.', bukti_list: [
+            { id: 'C.3.2.4.1', nama: 'Rencana Pengembangan Madrasah (observasi, wawancara, studi dokumen)' }
+        ], penugasan: timC },
+        { aspek_id: 'aspek_C', kode: 'C.3.3.1', pertanyaan: 'Bersedia belajar dari orang lain.', bukti_list: [
+            { id: 'C.3.3.1.1', nama: 'Forum komunikasi dengan lembaga pendidikan lain dan orang tua siswa' },
+            { id: 'C.3.3.1.2', nama: 'Komunitas/forum kegiatan yang diikuti' }
+        ], penugasan: timC },
+        { aspek_id: 'aspek_C', kode: 'C.3.3.2', pertanyaan: 'Ingin selalu melakukan yang terbaik.', bukti_list: [
+            { id: 'C.3.3.2.1', nama: 'Dokumen/foto pelaksanaan kegiatan' },
+            { id: 'C.3.3.2.2', nama: 'Keikutsertaan dalam lomba-lomba pembelajaran/pendidikan/manajemen prestasi' }
+        ], penugasan: timC },
+        { aspek_id: 'aspek_C', kode: 'C.3.3.3', pertanyaan: 'Menciptakan perubahan yang kuat.', bukti_list: [
+            { id: 'C.3.3.3.1', nama: 'Program inovasi madrasah atau RPM' },
+            { id: 'C.3.3.3.2', nama: 'Laporan target yang sudah dicapai' }
+        ], penugasan: timC },
+        { aspek_id: 'aspek_C', kode: 'C.3.4.1', pertanyaan: 'Mampu melibatkan tokoh agama, masyarakat, pemerintah.', bukti_list: [
+            { id: 'C.3.4.1.1', nama: 'MoU dengan pihak lain' },
+            { id: 'C.3.4.1.2', nama: 'Sister school/kemitraan dengan sekolah lain' }
+        ], penugasan: timC },
+        { aspek_id: 'aspek_C', kode: 'C.3.4.2', pertanyaan: 'Mampu bersikap obyektif dalam mengatasi konflik.', bukti_list: [
+            { id: 'C.3.4.2.1', nama: 'Observasi, wawancara, dan studi dokumen kegiatan/foto' }
+        ], penugasan: timC },
+        { aspek_id: 'aspek_C', kode: 'C.3.4.3', pertanyaan: 'Mampu bersikap simpatik/tenggang rasa.', bukti_list: [
+            { id: 'C.3.4.3.1', nama: 'Observasi, wawancara, dan studi dokumen kegiatan dan foto' }
+        ], penugasan: timC },
+        { aspek_id: 'aspek_C', kode: 'C.3.5.1', pertanyaan: 'Mampu merencanakan kegiatan produksi/jasa.', bukti_list: [
+            { id: 'C.3.5.1.1', nama: 'Dokumen laporan pelaksanaan dan hasil program pengembangan unit produksi kewirausahaan' }
+        ], penugasan: timC },
+        { aspek_id: 'aspek_C', kode: 'C.3.5.2', pertanyaan: 'Mampu membina kegiatan produksi/jasa.', bukti_list: [
+            { id: 'C.3.5.2.1', nama: 'Dokumen laporan pelaksanaan dan hasil Program Pengembangan Unit Produksi Kewirausahaan' }
+        ], penugasan: timC },
+        { aspek_id: 'aspek_C', kode: 'C.3.5.3', pertanyaan: 'Mampu melaksanakan pengawasan kegiatan produksi/jasa.', bukti_list: [
+            { id: 'C.3.5.3.1', nama: 'Laporan hasil Evaluasi Program Pengembangan Kewirausahaan' },
+            { id: 'C.3.5.3.2', nama: 'Program Pengembangan Jiwa Kewirausahaan' },
+            { id: 'C.3.5.3.3', nama: 'Program Pengembangan Unit Produksi Kewirausahaan' }
+        ], penugasan: timC },
+        { aspek_id: 'aspek_C', kode: 'C.3.5.4', pertanyaan: 'Mampu mengembangkan kegiatan produksi/jasa dan pemasarannya.', bukti_list: [
+            { id: 'C.3.5.4.1', nama: 'Laporan hasil Evaluasi Program Pengembangan Kewirausahaan' },
+            { id: 'C.3.5.4.2', nama: 'Program Pengembangan Jiwa Kewirausahaan' },
+            { id: 'C.3.5.4.3', nama: 'Program Pengembangan Unit Produksi Kewirausahaan' }
+        ], penugasan: timC },
+        
+        // DIMENSI D - SUPERVISI KEPADA GURU DAN TENAGA KEPENDIDIKAN
         { aspek_id: 'aspek_D', kode: 'D.4.1.1', pertanyaan: 'Mengidentifikasi masalah guru dalam pembelajaran.', bukti_list: [
             { id: 'D.4.1.1.1', nama: 'Program pengawasan pembelajaran/supervisi pembelajaran' },
             { id: 'D.4.1.1.2', nama: 'Jadwal pelaksanaan supervisi' },
             { id: 'D.4.1.1.3', nama: 'SK tim supervisor' }
         ], penugasan: timD },
+        { aspek_id: 'aspek_D', kode: 'D.4.1.2', pertanyaan: 'Mampu merumuskan tujuan supervisi.', bukti_list: [
+            { id: 'D.4.1.2.1', nama: 'Program pengawasan pembelajaran/supervisi pembelajaran' },
+            { id: 'D.4.1.2.2', nama: 'Jadwal pelaksanaan supervisi' },
+            { id: 'D.4.1.2.3', nama: 'Laporan hasil supervisi' }
+        ], penugasan: timD },
+        { aspek_id: 'aspek_D', kode: 'D.4.1.3', pertanyaan: 'Mampu mengembangkan instrumen supervisi.', bukti_list: [
+            { id: 'D.4.1.3.1', nama: 'Instrumen supervisi pembelajaran' }
+        ], penugasan: timD },
+        { aspek_id: 'aspek_D', kode: 'D.4.2.1', pertanyaan: 'Mengadakan pertemuan awal supervisi.', bukti_list: [
+            { id: 'D.4.2.1.1', nama: 'Program pengawasan pembelajaran/supervisi pembelajaran' },
+            { id: 'D.4.2.1.2', nama: 'Jadwal supervisi' },
+            { id: 'D.4.2.1.3', nama: 'Daftar hadir, notulen, foto pertemuan awal supervisi' }
+        ], penugasan: timD },
+        { aspek_id: 'aspek_D', kode: 'D.4.2.2', pertanyaan: 'Melaksanakan pemantauan pembelajaran.', bukti_list: [
+            { id: 'D.4.2.2.1', nama: 'Instrumen supervisi pembelajaran' },
+            { id: 'D.4.2.2.2', nama: 'Laporan hasil supervisi pembelajaran' },
+            { id: 'D.4.2.2.3', nama: 'Catatan rekomendasi hasil supervisi' },
+            { id: 'D.4.2.2.4', nama: 'Rencana tindak lanjut hasil supervisi' }
+        ], penugasan: timD },
+        { aspek_id: 'aspek_D', kode: 'D.4.2.3', pertanyaan: 'Melakukan pertemuan refleksi.', bukti_list: [
+            { id: 'D.4.2.3.1', nama: 'Analisis hasil supervisi pembelajaran' },
+            { id: 'D.4.2.3.2', nama: 'Catatan rekomendasi hasil supervisi' },
+            { id: 'D.4.2.3.3', nama: 'Daftar hadir, notulen, foto pertemuan refleksi hasil supervisi' }
+        ], penugasan: timD },
+        { aspek_id: 'aspek_D', kode: 'D.4.2.4', pertanyaan: 'Menyusun rekomendasi tindaklanjut perbaikan.', bukti_list: [
+            { id: 'D.4.2.4.1', nama: 'Dokumen hasil analisis dan tindak lanjut supervisi penilaian' },
+            { id: 'D.4.2.4.2', nama: 'Program kegiatan workshop/diklat penilaian untuk guru' },
+            { id: 'D.4.2.4.3', nama: 'Hasil analisis butir soal' },
+            { id: 'D.4.2.4.4', nama: 'Program remedial dan pengayaan' }
+        ], penugasan: timD },
+        { aspek_id: 'aspek_D', kode: 'D.4.3.1', pertanyaan: 'Memfasilitasi guru dalam merencanakan tindak lanjut perbaikan sistem penilaian hasil belajar.', bukti_list: [
+            { id: 'D.4.3.1.1', nama: 'Dokumen hasil analisis dan tindak lanjut supervisi pembelajaran' },
+            { id: 'D.4.3.1.2', nama: 'Hasil kegiatan workshop/diklat untuk guru' },
+            { id: 'D.4.3.1.3', nama: 'Data dan piagam hasil pelatihan guru' }
+        ], penugasan: timD },
+        { aspek_id: 'aspek_D', kode: 'D.4.3.2', pertanyaan: 'Mengecek ulang keterlaksanaan rekomendasi oleh guru.', bukti_list: [
+            { id: 'D.4.3.2.1', nama: 'Dokumen rekomendasi hasil perbaikan sistem penilaian hasil belajar' }
+        ], penugasan: timD },
+        { aspek_id: 'aspek_D', kode: 'D.4.3.3', pertanyaan: 'Melaksanakan pembinaan dan pengembangan guru sebagai tindak lanjut kegiatan supervisi.', bukti_list: [
+            { id: 'D.4.3.3.1', nama: 'Laporan tindak lanjut supervisi' },
+            { id: 'D.4.3.3.2', nama: 'Program PKB guru' },
+            { id: 'D.4.3.3.3', nama: 'Laporan kegiatan pembinaan guru' },
+            { id: 'D.4.3.3.4', nama: 'Daftar hadir, notulen, foto kegiatan PKB guru' }
+        ], penugasan: timD },
+        { aspek_id: 'aspek_D', kode: 'D.4.3.4', pertanyaan: 'Menggunakan data hasil supervisi untuk pemetaan ketercapaian program sebagai dasar perbaikan siklus berikutnya.', bukti_list: [
+            { id: 'D.4.3.4.1', nama: 'Program PKB guru' },
+            { id: 'D.4.3.4.2', nama: 'Laporan kegiatan pembinaan guru' },
+            { id: 'D.4.3.4.3', nama: 'Daftar hadir, notulen, foto kegiatan PKB guru' }
+        ], penugasan: timD },
+        
+        // DIMENSI E - HASIL KINERJA KEPALA MADRASAH
         { aspek_id: 'aspek_E', kode: 'E.5.1.1', pertanyaan: 'Prestasi akademik peserta didik.', bukti_list: [
             { id: 'E.5.1.1.1', nama: 'Piagam/sertifikat kejuaraan akademik (tingkat kecamatan s.d. nasional)' }
+        ], penugasan: timE },
+        { aspek_id: 'aspek_E', kode: 'E.5.1.2', pertanyaan: 'Prestasi non akademik peserta didik.', bukti_list: [
+            { id: 'E.5.1.2.1', nama: 'Piagam/sertifikat kejuaraan nonakademik (tingkat kecamatan s.d. nasional)' }
+        ], penugasan: timE },
+        { aspek_id: 'aspek_E', kode: 'E.5.2.1', pertanyaan: 'Prestasi akademik pendidik dan tendik.', bukti_list: [
+            { id: 'E.5.2.1.1', nama: 'Piagam/sertifikat kejuaraan akademik GTK' }
+        ], penugasan: timE },
+        { aspek_id: 'aspek_E', kode: 'E.5.2.2', pertanyaan: 'Prestasi non akademik pendidik dan tendik.', bukti_list: [
+            { id: 'E.5.2.2.1', nama: 'Piagam/sertifikat kejuaraan nonakademik GTK' }
+        ], penugasan: timE },
+        { aspek_id: 'aspek_E', kode: 'E.5.3.1', pertanyaan: 'Kelebihan prestasi akademik dari madrasah lain.', bukti_list: [
+            { id: 'E.5.3.1.1', nama: 'Dokumen peringkat madrasah (tingkat kecamatan s.d. nasional)' }
+        ], penugasan: timE },
+        { aspek_id: 'aspek_E', kode: 'E.5.3.2', pertanyaan: 'Kelebihan prestasi non akademik dari madrasah lain.', bukti_list: [
+            { id: 'E.5.3.2.1', nama: 'Dokumen peringkat madrasah (tingkat kecamatan s.d. nasional)' }
+        ], penugasan: timE },
+        { aspek_id: 'aspek_E', kode: 'E.5.3.3', pertanyaan: 'Kelebihan prestasi akademik dan non akademik GTK.', bukti_list: [
+            { id: 'E.5.3.3.1', nama: 'Dokumen peringkat GTK' }
+        ], penugasan: timE },
+        { aspek_id: 'aspek_E', kode: 'E.5.4.1', pertanyaan: 'Ijazah yang dimiliki kepala madrasah.', bukti_list: [
+            { id: 'E.5.4.1.1', nama: 'Fotokopi Ijazah terakhir Kepala Madrasah (S1/S2/S3)' }
+        ], penugasan: timE },
+        { aspek_id: 'aspek_E', kode: 'E.5.4.2', pertanyaan: 'Pendidikan dan pelatihan yang pernah diikuti.', bukti_list: [
+            { id: 'E.5.4.2.1', nama: 'Sertifikat STTPL/Diklat minimal 3 buah' }
+        ], penugasan: timE },
+        { aspek_id: 'aspek_E', kode: 'E.5.4.3', pertanyaan: 'Penguasaan ICT kepala madrasah.', bukti_list: [
+            { id: 'E.5.4.3.1', nama: 'Sertifikat pelatihan Microsoft Office/Internet' }
+        ], penugasan: timE },
+        { aspek_id: 'aspek_E', kode: 'E.5.4.4', pertanyaan: 'Prestasi yang diraih oleh kepala madrasah.', bukti_list: [
+            { id: 'E.5.4.4.1', nama: 'Piagam/sertifikat kejuaraan kepala madrasah' }
+        ], penugasan: timE },
+        { aspek_id: 'aspek_E', kode: 'E.5.4.5', pertanyaan: 'Kegiatan penelitian kependidikan.', bukti_list: [
+            { id: 'E.5.4.5.1', nama: 'Laporan Penelitian Tindakan Sekolah (PTS)/Karya Tulis Ilmiah' }
+        ], penugasan: timE },
+        { aspek_id: 'aspek_E', kode: 'E.5.4.6', pertanyaan: 'Kegiatan pelibatan komite.', bukti_list: [
+            { id: 'E.5.4.6.1', nama: 'Dokumentasi pelibatan komite dan stakeholder' }
+        ], penugasan: timE },
+        { aspek_id: 'aspek_E', kode: 'E.5.4.7', pertanyaan: 'Kegiatan kemitraan dengan stakeholder.', bukti_list: [
+            { id: 'E.5.4.7.1', nama: 'Dokumen kemitraan dengan stakeholder pendidikan' }
         ], penugasan: timE }
     ];
     
