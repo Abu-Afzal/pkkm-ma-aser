@@ -149,37 +149,20 @@ function renderDashboard() {
         html += '<div class="indikator-list">';
 
         aspek.indikator.forEach(function(ind) {
-            // Ganti bagian pengecekan penugasan ini di dalam renderDashboard():
-let isAssigned = false;
-if (userData && ind.penugasan) {
-    // Normalisasi nama user yang sedang login (hapus titik, koma, spasi berlebih, jadikan huruf kecil)
-    const userNameNorm = userData.nama.toLowerCase().replace(/[.,]/g, ' ').replace(/\s+/g, ' ').trim();
-    
-    isAssigned = ind.penugasan.some(function(penugasanNama) {
-        // Normalisasi nama penanggung jawab di indikator
-        const assignedNameNorm = penugasanNama.toLowerCase().replace(/[.,]/g, ' ').replace(/\s+/g, ' ').trim();
-        
-        // Wajib sama persis (termasuk gelar/kepanjangan namanya) agar tidak tertukar antar guru yang namanya mirip
-        return userNameNorm === assignedNameNorm;
-    });
-}
+            let isAssigned = false;
+            if (userData && ind.penugasan) {
+                // Normalisasi nama user yang sedang login (hapus titik, koma, spasi berlebih, huruf kecil)
+                const userNameNorm = userData.nama.toLowerCase().replace(/[.,]/g, ' ').replace(/\s+/g, ' ').trim();
+                
+                isAssigned = ind.penugasan.some(function(penugasanNama) {
+                    // Normalisasi nama penanggung jawab di indikator
+                    const assignedNameNorm = penugasanNama.toLowerCase().replace(/[.,]/g, ' ').replace(/\s+/g, ' ').trim();
                     
-                    const allWordsMatch = userWords.every(function(uWord) { 
-                        return assignedWords.includes(uWord); 
-                    });
-                    
-                    if (allWordsMatch) {
-                        if (userWords.length >= 2) return true;
-                        if (userWords.length === 1) {
-                            if (assignedWords.length === 1) return true;
-                            const commonPrefixes = ['nur', 'andi', 'st', 'hj', 'siti', 'sri', 'muhammad', 'ahmad'];
-                            if (!commonPrefixes.includes(userWords[0])) return true;
-                        }
-                    }
-                    return false;
+                    // Wajib sama persis (termasuk gelar) agar Nur Syamsi S.Pd dan Nur Syamsi S.Pd.I tidak tertukar
+                    return userNameNorm === assignedNameNorm;
                 });
             }
-
+            
             html += '<div class="indikator-item" style="background: white; padding: 16px; border-radius: 8px; margin-bottom: 12px; border: 1px solid #e2e8f0;">';
             html += '<div style="font-weight: 700; font-size: 1rem; color: #0f172a; margin-bottom: 6px;">';
             html += '<i class="fas fa-bullseye" style="color: #0891b2;"></i> ' + ind.kode + ' - ' + ind.pertanyaan;
