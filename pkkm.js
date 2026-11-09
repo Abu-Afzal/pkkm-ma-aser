@@ -151,7 +151,34 @@ function renderDashboard() {
         html += '<div class="indikator-list">';
 
         aspek.indikator.forEach(function(ind) {
-            var isAssigned = userData && ind.penugasan && ind.penugasan.some(function(p) { return p.toLowerCase().includes(userData.nama.toLowerCase().split(',')[0]); });
+            var isAssigned = false;
+if (userData && ind.penugasan) {
+    // Normalisasi nama user: hapus titik, koma, spasi berlebih
+    var userNameNormalized = userData.nama.toLowerCase()
+        .replace(/\./g, '')      // Hapus titik
+        .replace(/,/g, ' ')      // Ganti koma dengan spasi
+        .replace(/\s+/g, ' ')    // Hapus spasi berlebih
+        .trim();
+    
+    // Cek setiap nama di penugasan
+    ind.penugasan.forEach(function(penugasanNama) {
+        // Normalisasi nama di penugasan
+        var penugasanNormalized = penugasanNama.toLowerCase()
+            .replace(/\./g, '')
+            .replace(/,/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim();
+        
+        // Ambil nama depan saja untuk pencocokan
+        var userNamaDepan = userNameNormalized.split(' ')[0];
+        var penugasanNamaDepan = penugasanNormalized.split(' ')[0];
+        
+        // Cocokkan jika nama depan sama
+        if (userNamaDepan === penugasanNamaDepan) {
+            isAssigned = true;
+        }
+    });
+}
             
             html += '<div class="indikator-item" style="background: white; padding: 16px; border-radius: 8px; margin-bottom: 12px; border: 1px solid #e2e8f0;">';
             html += '<div style="font-weight: 700; font-size: 1rem; color: #0f172a; margin-bottom: 6px;">';
