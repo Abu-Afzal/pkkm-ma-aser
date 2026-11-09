@@ -644,7 +644,7 @@ window.setupDataPKKM = function() {
         var promises = [];
         aspekList.forEach(function(asp) { promises.push(db.collection('pkkm_aspek').doc('aspek_' + asp.kode).set(asp)); });
         
-        var timA = ['Nur Asia S.Pd', 'Eka Sasmita S.Sos', 'Fahrir S.Pd', 'Haerunnisa S.Pd M.Pd', 'Khusnul Inayah S.Pd', 'Erwin S.Pd', 'Panji S.Pd', 'Nur Faida Ulfa S.Kom'];
+        var timA = ['Nur Asia S.Pd', 'Eka Sasmita S.Sos', 'Fahrir S.Pd', 'Haerunnisa S.Pd.,M.Pd', 'Khusnul Inayah S.Pd', 'Erwin S.Pd', 'Panji S.Pd', 'Nur Faida Ulfa S.Kom'];
         var timB = ['Wahyuni S.Pd', 'Nur Syamsi S.Pd', 'Andi Irnawanti Nursak S.Pd', 'Nur Hikmah S.Pd', 'Halijah S.Pd', 'Marwati S.Pd M.Pd', 'Lukman SE'];
         var timC = ['Kasmidar S.Pd', 'Lisa Aswirayanti SE', 'Nur Syamsi S.Hum', 'Fajrul Ikhsan Alimuddin S.Pd'];
         var timD = ['Nur Syamsi S.Pd.I', 'St. Muawwafah S.Pd', 'St. Syamsiah S.Ag', 'Nurul Faiqah Jamal S.Pd'];
