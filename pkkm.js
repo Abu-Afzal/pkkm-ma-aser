@@ -240,7 +240,7 @@ function renderDashboard() {
                                                         <button disabled style="background: #e2e8f0; color: #94a3b8; padding: 5px 10px; border-radius: 5px; border: none; font-size: 0.8rem; width: 90px; cursor: not-allowed;">
                                                             <i class="fas fa-lock"></i> Kunci
                                                         </button>
-                                                    `)}
+                                                    `}
                                                 </div>
                                             </div>
                                         `;
