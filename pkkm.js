@@ -1,5 +1,6 @@
 // PKKM Digital - MA. As'adiyah Ereng-Ereng
 // Tahun Ajaran: 2026/2027
+// LOGIKA PENUGASAN: ANTI-TEMBUS & ANTI-GANDA (SUDAH DIPERBAIKI)
 
 const firebaseConfig = {
   apiKey: "AIzaSyDuAGy8Ku7Jh0is5WanEIf-A12AsVi2Kho",
@@ -153,7 +154,7 @@ function renderDashboard() {
         aspek.indikator.forEach(function(ind) {
             
             // ══════════════════════════════════════════════════════════
-            // LOGIKA PENUGASAN CERDAS (ANTI-AMBIGUITAS)
+            // LOGIKA PENUGASAN CERDAS (ANTI-TEMBUS & ANTI-GANDA)
             // ══════════════════════════════════════════════════════════
             var isAssigned = false;
             if (userData && ind.penugasan) {
@@ -166,21 +167,35 @@ function renderDashboard() {
                     var assignedNameNorm = penugasanNama.toLowerCase().replace(/[.,]/g, ' ').replace(/\s+/g, ' ').trim();
                     var assignedWords = assignedNameNorm.split(' ');
                     
-                    // A. Kecocokan Persis (Exact Match): "nur syamsi s pd" === "nur syamsi s pd"
+                    // A. Kecocokan Persis (Exact Match)
                     if (userNameNorm === assignedNameNorm) {
                         return true;
                     }
                     
-                    // B. Kecocokan Subset Ketat: Semua kata di nama user HARUS ada di nama penugasan
-                    // DAN nama user minimal 2 kata (mencegah "nur" saja cocok dengan "nur asia")
-                    var allUserWordsMatch = userWords.every(function(w) { 
-                        return assignedWords.includes(w); 
+                    // B. Hitung berapa kata user yang ada di nama penugasan
+                    var matchCount = 0;
+                    userWords.forEach(function(w) {
+                        if (assignedWords.includes(w)) {
+                            matchCount++;
+                        }
                     });
                     
-                    if (allUserWordsMatch && userWords.length >= 2) {
-                        // Contoh: user "nur syamsi" akan cocok dengan "nur syamsi s pd"
-                        // TAPI TIDAK akan cocok dengan "nur asia s pd" (karena "syamsi" tidak ada di "nur asia")
-                        return true;
+                    // Jika SEMUA kata user ada di nama penugasan
+                    if (matchCount === userWords.length) {
+                        // Cek apakah user sudah memiliki gelar di nama databasenya
+                        var lastUserWord = userWords[userWords.length - 1];
+                        var titles = ['s', 'pd', 'hum', 'se', 'm', 'ag', 'kom', 'sos', 'i', 'ii', 'spdi', 'mpi'];
+                        var hasTitle = titles.includes(lastUserWord);
+                        
+                        if (hasTitle) {
+                            // Jika user SUDAH punya gelar (misal: "Nur Syamsi S.Pd"), 
+                            // JANGAN izinkan cocok dengan nama yang lebih panjang (misal: "Nur Syamsi S.Pd.I")
+                            return false;
+                        } else {
+                            // Jika user TIDAK punya gelar di database (misal cuma: "Nur Syamsi" atau "Erwin"),
+                            // Izinkan cocok dengan nama yang ada gelarnya (misal: "Nur Syamsi S.Pd")
+                            return true;
+                        }
                     }
                     
                     return false;
@@ -675,7 +690,6 @@ window.setupDataPKKM = function() {
         var promises = [];
         aspekList.forEach(function(asp) { promises.push(db.collection('pkkm_aspek').doc('aspek_' + asp.kode).set(asp)); });
         
-        // DATA PANITIA SESUAI SK (SUDAH DIPERBAIKI, TERMASUK PEMISAHAN NAMA YANG MENEMPEL)
         var timA = ['Nur Asia S.Pd', 'Eka Sasmita S.Sos', 'Fahrir S.Pd', 'Haerunnisa S.Pd M.Pd', 'Khusnul Inayah S.Pd', 'Erwin S.Pd', 'Panji S.Pd', 'Nur Faida Ulfa S.Kom'];
         var timB = ['Wahyuni S.Pd', 'Nur Syamsi S.Pd', 'Andi Irnawanti Nursak S.Pd', 'Nur Hikmah S.Pd', 'Halijah S.Pd', 'Marwati S.Pd M.Pd', 'Lukman SE'];
         var timC = ['Kasmidar S.Pd', 'Lisa Aswirayanti SE', 'Nur Syamsi S.Hum', 'Fajrul Ikhsan Alimuddin S.Pd'];
