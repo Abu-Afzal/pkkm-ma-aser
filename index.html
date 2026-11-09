@@ -41,10 +41,18 @@
 
     <!-- Main Container -->
     <div class="container">
-        <!-- Periode Badge -->
-        <div id="periodeFilter" style="display: flex; gap: 12px; margin-bottom: 20px; padding: 14px 20px; background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%); border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); flex-wrap: wrap; align-items: center;">
-            <div style="color: white; font-weight: 700; font-size: 1rem;"><i class="fas fa-calendar-alt"></i> Periode PKKM:</div>
-            <div id="periodeBadge" style="margin-left: 12px; background: white; color: #0e7490; padding: 6px 16px; border-radius: 20px; font-size: 0.95rem; font-weight: 700;">📅 2026/2027</div>
+        <!-- Periode Badge / Filter Multi-Tahun Ajaran -->
+        <div id="periodeFilter" style="display: flex; gap: 12px; margin-bottom: 20px; padding: 14px 20px; background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%); border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); flex-wrap: wrap; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                <div style="color: white; font-weight: 700; font-size: 1rem;"><i class="fas fa-calendar-alt"></i> Periode PKKM:</div>
+                <select id="selectTahunAjaran" onchange="changeTahunAjaran(this.value)" style="padding: 6px 14px; border-radius: 20px; border: none; font-weight: 700; color: #0e7490; background: white; cursor: pointer; outline: none; font-size: 0.95rem;">
+                    <!-- Opsi otomatis diisi oleh JS loadDaftarPeriode() -->
+                    <option value="2026/2027">2026/2027</option>
+                </select>
+            </div>
+            <button id="btnTambahPeriode" onclick="tambahPeriodeBaru()" style="background: rgba(255, 255, 255, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.4); padding: 6px 14px; border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 0.85rem; display: flex; align-items: center; gap: 6px;">
+                <i class="fas fa-plus-circle"></i> Tambah Periode
+            </button>
         </div>
 
         <!-- Statistics -->
@@ -87,12 +95,12 @@
                         <button class="btn btn-warning" onclick="setupDataPKKM()"><i class="fas fa-database"></i> Jalankan Setup Data Awal</button>
                     </div>
 
-                    <!-- Manajemen User (DITAMBAHKAN FORM TAMBAH USER DI SINI) -->
+                    <!-- Manajemen User -->
                     <div style="margin-bottom: 24px;">
                         <h3 style="margin-bottom: 12px; color: #0e7490;"><i class="fas fa-users"></i> Manajemen User</h3>
                         <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;">
                             
-                            <!-- FORM TAMBAH USER -->
+                            <!-- Form Tambah User -->
                             <div style="background: #f0f9ff; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
                                 <h4 style="margin: 0 0 12px 0; color: #0e7490; font-size: 1rem;"><i class="fas fa-user-plus"></i> Tambah User Baru</h4>
                                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
@@ -109,7 +117,6 @@
                                     <i class="fas fa-user-plus"></i> Tambah User
                                 </button>
                             </div>
-                            <!-- AKHIR FORM TAMBAH USER -->
 
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
                                 <span style="font-weight: 600; color: #475569;">Daftar Pengguna Terdaftar</span>
@@ -132,7 +139,7 @@
                         </div>
                     </div>
 
-                    <!-- Penugasan -->
+                    <!-- Penugasan Indikator -->
                     <div>
                         <h3 style="margin-bottom: 12px; color: #0e7490;"><i class="fas fa-tasks"></i> Penugasan Indikator</h3>
                         <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;">
@@ -149,7 +156,6 @@
                             <div id="adminAssignmentList"></div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -221,7 +227,6 @@
     <!-- Footer -->
     <footer style="text-align: center; padding: 24px; color: #64748b; font-size: 0.85rem; border-top: 1px solid #e2e8f0; margin-top: 40px;">
         <p><strong>PKKM Digital - MA. As'adiyah Ereng-Ereng</strong></p>
-        <p>Tahun Pelajaran 2026/2027</p>
         <p style="margin-top: 8px;">© 2026 Yayasan Pendidikan As'adiyah</p>
     </footer>
 
