@@ -560,13 +560,13 @@ window.saveAssignment = function(indikatorId, btn) {
 };
 
 window.setupDataPKKM = function() {
-    if (!checkAdminAccess() || !confirm('Isi database dengan 109 indikator PKKM lengkap untuk MA. As\'adiyah Ereng-Ereng?')) return;
+    if (!checkAdminAccess() || !confirm('Isi database dengan 95 indikator PKKM (4 Dimensi) untuk MA. As\'adiyah Ereng-Ereng?')) return;
     
     var aspekList = [
         { kode: 'A', nama: 'Usaha Pengembangan Madrasah' },
         { kode: 'B', nama: 'Pelaksanaan Tugas Manajerial' },
         { kode: 'C', nama: 'Pengembangan Kewirausahaan' },
-        { kode: 'D', nama: 'Supervisi Kepada Guru dan Tenaga Kependidikan' },
+        { kode: 'D', nama: 'Supervisi Kepada Guru dan Tenaga Kependidikan' }
     ];
     
     var promises = [];
@@ -580,7 +580,7 @@ window.setupDataPKKM = function() {
     var timD = ['Nur Syamsi S.Pd.I', 'St. Muawwafah S.Pd', 'St. Syamsiah S.Ag', 'Nurul Faiqah Jamal S.Pd'];
 
     var indikatorList = [
-        // DIMENSI A - USAHA PENGEMBANGAN MADRASAH
+        // DIMENSI A - USAHA PENGEMBANGAN MADRASAH (25 indikator)
         { aspek_id: 'aspek_A', kode: 'A.1.1.1', pertanyaan: 'Mampu mengembangkan struktur organisasi yang sesuai dengan kebutuhan program.', bukti_list: [
             { id: 'A.1.1.1.1', nama: 'Bagan/struktur organisasi' },
             { id: 'A.1.1.1.2', nama: 'Notulen rapat keputusan tentang penyusunan struktur organisasi' },
@@ -763,7 +763,7 @@ window.setupDataPKKM = function() {
             { id: 'A.1.7.3.5', nama: 'Dokumen aplikasi layanan perpustakaan' }
         ], penugasan: timA },
         
-        // DIMENSI B - PELAKSANAAN TUGAS MANAJERIAL
+        // DIMENSI B - PELAKSANAAN TUGAS MANAJERIAL (40 indikator)
         { aspek_id: 'aspek_B', kode: 'B.2.1.1', pertanyaan: 'Mampu mengembangkan RKJM, RKT/RKAM berdasarkan evaluasi 8 SNP.', bukti_list: [
             { id: 'B.2.1.1.1', nama: 'Dokumen Evaluasi diri madrasah' },
             { id: 'B.2.1.1.2', nama: 'Dokumen RKJM dan RKT berbasis SDM' }
@@ -950,7 +950,7 @@ window.setupDataPKKM = function() {
             { id: 'B.2.10.4.1', nama: 'Dokumen laporan pelaksanaan monitoring dan evaluasi' }
         ], penugasan: timB },
         
-        // DIMENSI C - PENGEMBANGAN KEWIRAUSAHAAN
+        // DIMENSI C - PENGEMBANGAN KEWIRAUSAHAAN (18 indikator)
         { aspek_id: 'aspek_C', kode: 'C.3.1.1', pertanyaan: 'Memahami dan menghayati arti perubahan (inovasi) madrasah.', bukti_list: [
             { id: 'C.3.1.1.1', nama: 'Program pengembangan kewirausahaan' },
             { id: 'C.3.1.1.2', nama: 'Profil madrasah beberapa tahun terakhir' }
@@ -1027,7 +1027,7 @@ window.setupDataPKKM = function() {
             { id: 'C.3.5.4.3', nama: 'Program Pengembangan Unit Produksi Kewirausahaan' }
         ], penugasan: timC },
         
-        // DIMENSI D - SUPERVISI KEPADA GURU DAN TENAGA KEPENDIDIKAN
+        // DIMENSI D - SUPERVISI KEPADA GURU DAN TENAGA KEPENDIDIKAN (12 indikator)
         { aspek_id: 'aspek_D', kode: 'D.4.1.1', pertanyaan: 'Mengidentifikasi masalah guru dalam pembelajaran.', bukti_list: [
             { id: 'D.4.1.1.1', nama: 'Program pengawasan pembelajaran/supervisi pembelajaran' },
             { id: 'D.4.1.1.2', nama: 'Jadwal pelaksanaan supervisi' },
@@ -1081,7 +1081,7 @@ window.setupDataPKKM = function() {
             { id: 'D.4.3.4.1', nama: 'Program PKB guru' },
             { id: 'D.4.3.4.2', nama: 'Laporan kegiatan pembinaan guru' },
             { id: 'D.4.3.4.3', nama: 'Daftar hadir, notulen, foto kegiatan PKB guru' }
-        ], penugasan: timD },
+        ], penugasan: timD }
     ];
     
     indikatorList.forEach(function(ind) {
