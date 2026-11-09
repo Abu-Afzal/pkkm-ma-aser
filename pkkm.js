@@ -22,6 +22,7 @@ let pkkmData = [];
 let allUsers = [];
 let currentSubBuktiId = null;
 const currentTahun = '2026/2027';
+let uploadCache = {};
 
 document.addEventListener('DOMContentLoaded', () => {
     loadPKKMData();
@@ -208,11 +209,14 @@ function renderDashboard() {
                 html += '</div>';
                 html += '<div style="flex-shrink: 0; display: flex; flex-direction: column; gap: 4px; align-items: flex-end;">';
                 
-                if (hasUpload) {
-                    const safeUpload = JSON.stringify(lastUpload).replace(/'/g, "\\'");
-                    html += '<button onclick="previewFile(\'' + safeUpload + '\')" style="background: #6366f1; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; font-size: 0.8rem; font-weight: 600; width: 90px;"><i class="fas fa-eye"></i> Preview</button>';
-                    html += '<button onclick="downloadFile(\'' + safeUpload + '\')" style="background: #10b981; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; font-size: 0.8rem; font-weight: 600; width: 90px;"><i class="fas fa-download"></i> Download</button>';
-                }
+                // Di dalam loop renderDashboard saat memproses bukti yang sudah diupload:
+if (hasUpload) {
+    // Simpan data ke cache global menggunakan ID dokumen upload
+    uploadCache[lastUpload.id] = lastUpload;
+
+    html += '<button onclick="previewFile(\'' + lastUpload.id + '\')" style="background: #6366f1; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; font-size: 0.8rem; font-weight: 600; width: 90px;"><i class="fas fa-eye"></i> Preview</button>';
+    html += '<button onclick="downloadFile(\'' + lastUpload.id + '\')" style="background: #10b981; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; font-size: 0.8rem; font-weight: 600; width: 90px;"><i class="fas fa-download"></i> Download</button>';
+}
                 
                 if (userData) {
                     if (isAssigned) {
@@ -244,16 +248,24 @@ function renderDashboard() {
     container.innerHTML = html;
 }
 
-window.previewFile = function(uploadDataStr) {
-    var uploadData = typeof uploadDataStr === 'string' ? JSON.parse(uploadDataStr) : uploadDataStr;
-    if (!uploadData) return;
+window.previewFile = function(uploadId) {
+    var uploadData = uploadCache[uploadId];
+    if (!uploadData) {
+        alert('Data file tidak ditemukan di cache.');
+        return;
+    }
     if (uploadData.file_type === 'link' && uploadData.file_drive_link) {
         window.open(uploadData.file_drive_link, '_blank');
         return;
     }
     if (uploadData.file_base64) {
         try {
-            var byteCharacters = atob(uploadData.file_base64.split(',')[1]);
+            var base64Parts = uploadData.file_base64.split(',');
+            if (base64Parts.length < 2) {
+                alert('Format file base64 tidak valid.');
+                return;
+            }
+            var byteCharacters = atob(base64Parts[1]);
             var byteNumbers = new Array(byteCharacters.length);
             for (var i = 0; i < byteCharacters.length; i++) {
                 byteNumbers[i] = byteCharacters.charCodeAt(i);
@@ -263,18 +275,24 @@ window.previewFile = function(uploadDataStr) {
             var blobUrl = URL.createObjectURL(blob);
             var newWindow = window.open();
             if (newWindow) {
-                newWindow.document.write('<!DOCTYPE html><html><head><title>Preview</title><style>body{margin:0;padding:0;}iframe{width:100%;height:100vh;border:none;}</style></head><body><iframe src="' + blobUrl + '" type="application/pdf"></iframe></body></html>');
+                newWindow.document.write('<!DOCTYPE html><html><head><title>Preview Dokumen</title><style>body{margin:0;padding:0;}iframe{width:100%;height:100vh;border:none;}</style></head><body><iframe src="' + blobUrl + '" type="application/pdf"></iframe></body></html>');
                 newWindow.document.close();
+            } else {
+                alert('Pop-up diblokir oleh browser. Izinkan pop-up untuk melihat preview.');
             }
         } catch (error) {
+            console.error('Error preview:', error);
             alert('Gagal membuka preview.');
         }
     }
 };
 
-window.downloadFile = function(uploadDataStr) {
-    var uploadData = typeof uploadDataStr === 'string' ? JSON.parse(uploadDataStr) : uploadDataStr;
-    if (!uploadData) return;
+window.downloadFile = function(uploadId) {
+    var uploadData = uploadCache[uploadId];
+    if (!uploadData) {
+        alert('Data file tidak ditemukan di cache.');
+        return;
+    }
     if (uploadData.file_type === 'link' && uploadData.file_drive_link) {
         window.open(uploadData.file_drive_link, '_blank');
         return;
@@ -283,7 +301,9 @@ window.downloadFile = function(uploadDataStr) {
         var link = document.createElement('a');
         link.href = uploadData.file_base64;
         link.download = uploadData.file_name || 'dokumen.pdf';
+        document.body.appendChild(link);
         link.click();
+        document.body.removeChild(link);
     }
 };
 
