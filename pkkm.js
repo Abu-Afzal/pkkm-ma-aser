@@ -567,7 +567,6 @@ window.setupDataPKKM = function() {
         { kode: 'B', nama: 'Pelaksanaan Tugas Manajerial' },
         { kode: 'C', nama: 'Pengembangan Kewirausahaan' },
         { kode: 'D', nama: 'Supervisi Kepada Guru dan Tenaga Kependidikan' },
-        { kode: 'E', nama: 'Hasil Kinerja Kepala Madrasah' }
     ];
     
     var promises = [];
@@ -579,7 +578,6 @@ window.setupDataPKKM = function() {
     var timB = ['Wahyuni S.Pd', 'Nur Syamsi S.Pd', 'Andi Irnawanti Nursak S.Pd', 'Nur Hikmah S.Pd', 'Halijah S.Pd', 'Marwati S.Pd M.Pd', 'Lukman SE'];
     var timC = ['Kasmidar S.Pd', 'Lisa Aswirayanti SE', 'Nur Syamsi S.Hum', 'Fajrul Ikhsan Alimuddin S.Pd'];
     var timD = ['Nur Syamsi S.Pd.I', 'St. Muawwafah S.Pd', 'St. Syamsiah S.Ag', 'Nurul Faiqah Jamal S.Pd'];
-    var timE = ['Andi Arifuddin Nowa S.Sos'];
 
     var indikatorList = [
         // DIMENSI A - USAHA PENGEMBANGAN MADRASAH
@@ -1084,50 +1082,6 @@ window.setupDataPKKM = function() {
             { id: 'D.4.3.4.2', nama: 'Laporan kegiatan pembinaan guru' },
             { id: 'D.4.3.4.3', nama: 'Daftar hadir, notulen, foto kegiatan PKB guru' }
         ], penugasan: timD },
-        
-        // DIMENSI E - HASIL KINERJA KEPALA MADRASAH
-        { aspek_id: 'aspek_E', kode: 'E.5.1.1', pertanyaan: 'Prestasi akademik peserta didik.', bukti_list: [
-            { id: 'E.5.1.1.1', nama: 'Piagam/sertifikat kejuaraan akademik (tingkat kecamatan s.d. nasional)' }
-        ], penugasan: timE },
-        { aspek_id: 'aspek_E', kode: 'E.5.1.2', pertanyaan: 'Prestasi non akademik peserta didik.', bukti_list: [
-            { id: 'E.5.1.2.1', nama: 'Piagam/sertifikat kejuaraan nonakademik (tingkat kecamatan s.d. nasional)' }
-        ], penugasan: timE },
-        { aspek_id: 'aspek_E', kode: 'E.5.2.1', pertanyaan: 'Prestasi akademik pendidik dan tendik.', bukti_list: [
-            { id: 'E.5.2.1.1', nama: 'Piagam/sertifikat kejuaraan akademik GTK' }
-        ], penugasan: timE },
-        { aspek_id: 'aspek_E', kode: 'E.5.2.2', pertanyaan: 'Prestasi non akademik pendidik dan tendik.', bukti_list: [
-            { id: 'E.5.2.2.1', nama: 'Piagam/sertifikat kejuaraan nonakademik GTK' }
-        ], penugasan: timE },
-        { aspek_id: 'aspek_E', kode: 'E.5.3.1', pertanyaan: 'Kelebihan prestasi akademik dari madrasah lain.', bukti_list: [
-            { id: 'E.5.3.1.1', nama: 'Dokumen peringkat madrasah (tingkat kecamatan s.d. nasional)' }
-        ], penugasan: timE },
-        { aspek_id: 'aspek_E', kode: 'E.5.3.2', pertanyaan: 'Kelebihan prestasi non akademik dari madrasah lain.', bukti_list: [
-            { id: 'E.5.3.2.1', nama: 'Dokumen peringkat madrasah (tingkat kecamatan s.d. nasional)' }
-        ], penugasan: timE },
-        { aspek_id: 'aspek_E', kode: 'E.5.3.3', pertanyaan: 'Kelebihan prestasi akademik dan non akademik GTK.', bukti_list: [
-            { id: 'E.5.3.3.1', nama: 'Dokumen peringkat GTK' }
-        ], penugasan: timE },
-        { aspek_id: 'aspek_E', kode: 'E.5.4.1', pertanyaan: 'Ijazah yang dimiliki kepala madrasah.', bukti_list: [
-            { id: 'E.5.4.1.1', nama: 'Fotokopi Ijazah terakhir Kepala Madrasah (S1/S2/S3)' }
-        ], penugasan: timE },
-        { aspek_id: 'aspek_E', kode: 'E.5.4.2', pertanyaan: 'Pendidikan dan pelatihan yang pernah diikuti.', bukti_list: [
-            { id: 'E.5.4.2.1', nama: 'Sertifikat STTPL/Diklat minimal 3 buah' }
-        ], penugasan: timE },
-        { aspek_id: 'aspek_E', kode: 'E.5.4.3', pertanyaan: 'Penguasaan ICT kepala madrasah.', bukti_list: [
-            { id: 'E.5.4.3.1', nama: 'Sertifikat pelatihan Microsoft Office/Internet' }
-        ], penugasan: timE },
-        { aspek_id: 'aspek_E', kode: 'E.5.4.4', pertanyaan: 'Prestasi yang diraih oleh kepala madrasah.', bukti_list: [
-            { id: 'E.5.4.4.1', nama: 'Piagam/sertifikat kejuaraan kepala madrasah' }
-        ], penugasan: timE },
-        { aspek_id: 'aspek_E', kode: 'E.5.4.5', pertanyaan: 'Kegiatan penelitian kependidikan.', bukti_list: [
-            { id: 'E.5.4.5.1', nama: 'Laporan Penelitian Tindakan Sekolah (PTS)/Karya Tulis Ilmiah' }
-        ], penugasan: timE },
-        { aspek_id: 'aspek_E', kode: 'E.5.4.6', pertanyaan: 'Kegiatan pelibatan komite.', bukti_list: [
-            { id: 'E.5.4.6.1', nama: 'Dokumentasi pelibatan komite dan stakeholder' }
-        ], penugasan: timE },
-        { aspek_id: 'aspek_E', kode: 'E.5.4.7', pertanyaan: 'Kegiatan kemitraan dengan stakeholder.', bukti_list: [
-            { id: 'E.5.4.7.1', nama: 'Dokumen kemitraan dengan stakeholder pendidikan' }
-        ], penugasan: timE }
     ];
     
     indikatorList.forEach(function(ind) {
