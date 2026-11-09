@@ -514,10 +514,102 @@ window.exportUsersToExcel = function() {
     alert('Berhasil mengunduh ' + allUsers.length + ' user!');
 };
 
+// ==========================================
+// FUNGSI TAMBAH USER BARU
+// ==========================================
+window.tambahUser = function() {
+    if (!checkAdminAccess()) return;
+    
+    var namaInput = document.getElementById('inputNama');
+    var emailInput = document.getElementById('inputEmail');
+    var passwordInput = document.getElementById('inputPassword');
+    var roleInput = document.getElementById('inputRole');
+    
+    var nama = namaInput ? namaInput.value.trim() : '';
+    var email = emailInput ? emailInput.value.trim() : '';
+    var password = passwordInput ? passwordInput.value : '';
+    var role = roleInput ? roleInput.value : 'guru';
+    
+    // 1. Validasi Input
+    if (!email) {
+        alert('⚠️ Email harus diisi!');
+        if (emailInput) emailInput.focus();
+        return;
+    }
+    if (!password || password.length < 6) {
+        alert('⚠️ Password minimal 6 karakter!');
+        if (passwordInput) passwordInput.focus();
+        return;
+    }
+    if (!nama) {
+        alert('⚠️ Nama harus diisi!');
+        if (namaInput) namaInput.focus();
+        return;
+    }
+    
+    // 2. Cek apakah email sudah terdaftar di Firestore
+    db.collection('users').where('email', '==', email).get().then(function(snapshot) {
+        if (!snapshot.empty) {
+            alert('⚠️ Email sudah terdaftar! Gunakan email lain.');
+            if (emailInput) {
+                emailInput.focus();
+                emailInput.select();
+            }
+            return;
+        }
+        
+        // 3. Buat User di Firebase Authentication
+        auth.createUserWithEmailAndPassword(email, password).then(function(userCredential) {
+            var uid = userCredential.user.uid;
+            
+            // 4. Simpan data tambahan ke Firestore
+            var userData = {
+                uid: uid,
+                email: email,
+                nama: nama,
+                role: role,
+                password: password, // Disimpan agar bisa ditampilkan di tabel admin
+                created_at: firebase.firestore.FieldValue.serverTimestamp()
+            };
+            
+            return db.collection('users').doc(uid).set(userData);
+        }).then(function() {
+            alert('✅ User berhasil ditambahkan!\n\nNama: ' + nama + '\nEmail: ' + email + '\nPassword: ' + password + '\n\nUser sekarang bisa login.');
+            
+            // 5. Reset Form
+            if (namaInput) namaInput.value = '';
+            if (emailInput) emailInput.value = '';
+            if (passwordInput) passwordInput.value = '';
+            if (roleInput) roleInput.value = 'guru';
+            
+            // 6. Refresh tabel user
+            loadAdminData();
+        }).catch(function(error) {
+            var errorMsg = error.message;
+            if (error.code === 'auth/weak-password') {
+                errorMsg = 'Password terlalu lemah. Minimal 6 karakter.';
+            } else if (error.code === 'auth/email-already-in-use') {
+                errorMsg = 'Email sudah terdaftar di sistem Firebase.';
+            }
+            alert('❌ Gagal menambah user: ' + errorMsg);
+        });
+    }).catch(function(error) {
+        alert('❌ Error: ' + error.message);
+    });
+};
+
+// ==========================================
+// FUNGSI HAPUS USER
+// ==========================================
 window.deleteUser = function(userId) {
     if (!checkAdminAccess() || !confirm('Yakin hapus user ini?')) return;
-    db.collection('users').doc(userId).delete().then(function() { alert('User dihapus.'); loadAdminData(); })
-    .catch(function(error) { alert('Gagal: ' + error.message); });
+    
+    db.collection('users').doc(userId).delete().then(function() { 
+        alert('✅ User berhasil dihapus.'); 
+        loadAdminData(); 
+    }).catch(function(error) { 
+        alert('❌ Gagal: ' + error.message); 
+    });
 };
 
 function renderAdminAssignments() {

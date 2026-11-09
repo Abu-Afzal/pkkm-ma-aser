@@ -4,14 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PKKM Digital - MA. As'adiyah Ereng-Ereng</title>
-    
-    <!-- Favicon (optional - nanti bisa ditambah) -->
     <link rel="icon" type="image/png" href="assets/logo-aser.png">
-    
-    <!-- CSS -->
     <link rel="stylesheet" href="pkkm.css">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -20,7 +14,7 @@
         <div class="header-content">
             <div class="brand">
                 <div style="display: flex; align-items: center; gap: 16px;">
-                    <img src="assets/logo-aser.png" alt="Logo MA As'adiyah Ereng-Ereng" class="logo-madrasah" onerror="this.src='https://via.placeholder.com/50x50/10b981/ffffff?text=MA'">
+                    <img src="assets/logo-aser.png" alt="Logo MA As'adiyah" class="logo-madrasah" onerror="this.src='https://via.placeholder.com/50x50/10b981/ffffff?text=MA'">
                     <div>
                         <h1><i class="fas fa-award"></i> PKKM Digital</h1>
                         <p>MA. As'adiyah Ereng-Ereng | Yayasan Pendidikan As'adiyah</p>
@@ -35,7 +29,6 @@
                     <div id="userName" style="font-weight: 700; color: #0f172a; font-size: 0.9rem;">-</div>
                     <div id="userRole" style="font-size: 0.75rem; color: #0891b2; text-transform: uppercase;">-</div>
                 </div>
-                
                 <button id="btnLogin" class="btn btn-primary" onclick="openLoginModal()" style="padding: 8px 16px;">
                     <i class="fas fa-sign-in-alt"></i> Login
                 </button>
@@ -50,38 +43,21 @@
     <div class="container">
         <!-- Periode Badge -->
         <div id="periodeFilter" style="display: flex; gap: 12px; margin-bottom: 20px; padding: 14px 20px; background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%); border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); flex-wrap: wrap; align-items: center;">
-            <div style="color: white; font-weight: 700; font-size: 1rem;">
-                <i class="fas fa-calendar-alt"></i> Periode PKKM:
-            </div>
-            <div id="periodeBadge" style="margin-left: 12px; background: white; color: #0e7490; padding: 6px 16px; border-radius: 20px; font-size: 0.95rem; font-weight: 700;">
-                📅 2026/2027
-            </div>
+            <div style="color: white; font-weight: 700; font-size: 1rem;"><i class="fas fa-calendar-alt"></i> Periode PKKM:</div>
+            <div id="periodeBadge" style="margin-left: 12px; background: white; color: #0e7490; padding: 6px 16px; border-radius: 20px; font-size: 0.95rem; font-weight: 700;">📅 2026/2027</div>
         </div>
 
         <!-- Statistics -->
         <div class="stats-grid">
-            <div class="stat-box" style="border-left-color: #0891b2;">
-                <div class="value" id="statTotal">0</div>
-                <div class="label">Total Indikator</div>
-            </div>
-            <div class="stat-box" style="border-left-color: #10b981;">
-                <div class="value" id="statSelesai">0</div>
-                <div class="label">Sudah Diupload</div>
-            </div>
-            <div class="stat-box" style="border-left-color: #ef4444;">
-                <div class="value" id="statBelum">0</div>
-                <div class="label">Belum Diupload</div>
-            </div>
+            <div class="stat-box" style="border-left-color: #0891b2;"><div class="value" id="statTotal">0</div><div class="label">Total Indikator</div></div>
+            <div class="stat-box" style="border-left-color: #10b981;"><div class="value" id="statSelesai">0</div><div class="label">Sudah Diupload</div></div>
+            <div class="stat-box" style="border-left-color: #ef4444;"><div class="value" id="statBelum">0</div><div class="label">Belum Diupload</div></div>
         </div>
 
         <!-- Navigation Tabs -->
         <div id="mainNavTabs" class="nav-tabs" style="display: none;">
-            <button class="tab-btn active" onclick="switchMainTab('dashboard')">
-                <i class="fas fa-chart-line"></i> Dashboard
-            </button>
-            <button id="tabBtnAdmin" class="tab-btn" onclick="switchMainTab('admin')" style="display: none;">
-                <i class="fas fa-cog"></i> Admin Panel
-            </button>
+            <button class="tab-btn active" onclick="switchMainTab('dashboard')"><i class="fas fa-chart-line"></i> Dashboard</button>
+            <button id="tabBtnAdmin" class="tab-btn" onclick="switchMainTab('admin')" style="display: none;"><i class="fas fa-cog"></i> Admin Panel</button>
         </div>
 
         <!-- Loading -->
@@ -93,39 +69,51 @@
         <!-- Tab Content: Dashboard -->
         <div id="tab-dashboard" class="tab-content active">
             <div class="card">
-                <div class="card-header">
-                    <h2><i class="fas fa-list-check"></i> Progres & Tugas Bukti Fisik PKKM</h2>
-                </div>
-                <div class="card-body" id="aspekContainer">
-                    <!-- Data akan di-render oleh JavaScript -->
-                </div>
+                <div class="card-header"><h2><i class="fas fa-list-check"></i> Progres & Tugas Bukti Fisik PKKM</h2></div>
+                <div class="card-body" id="aspekContainer"></div>
             </div>
         </div>
 
         <!-- Tab Content: Admin Panel -->
         <div id="tab-admin" class="tab-content">
             <div class="card">
-                <div class="card-header">
-                    <h2><i class="fas fa-cog"></i> Panel Administrasi</h2>
-                </div>
+                <div class="card-header"><h2><i class="fas fa-cog"></i> Panel Administrasi</h2></div>
                 <div class="card-body">
+                    
                     <!-- Setup Data -->
                     <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 16px; border-radius: 8px; margin-bottom: 24px;">
                         <h3 style="margin: 0 0 8px 0; color: #92400e;"><i class="fas fa-exclamation-triangle"></i> Setup Data Awal</h3>
-                        <p style="margin: 0 0 12px 0; color: #92400e;">Klik tombol di bawah untuk mengisi database dengan 109 indikator PKKM beserta sub-bukti.</p>
-                        <button class="btn btn-warning" onclick="setupDataPKKM()">
-                            <i class="fas fa-database"></i> Jalankan Setup Data Awal
-                        </button>
+                        <p style="margin: 0 0 12px 0; color: #92400e;">Klik tombol di bawah untuk mengisi database dengan <strong>95 indikator PKKM (4 Dimensi A-D)</strong> sesuai SK Tahun Pelajaran 2026/2027.</p>
+                        <button class="btn btn-warning" onclick="setupDataPKKM()"><i class="fas fa-database"></i> Jalankan Setup Data Awal</button>
                     </div>
 
-                    <!-- Manajemen User -->
+                    <!-- Manajemen User (DITAMBAHKAN FORM TAMBAH USER DI SINI) -->
                     <div style="margin-bottom: 24px;">
                         <h3 style="margin-bottom: 12px; color: #0e7490;"><i class="fas fa-users"></i> Manajemen User</h3>
                         <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                                <button class="btn btn-primary" onclick="exportUsersToExcel()">
-                                    <i class="fas fa-file-excel"></i> Export User ke Excel
+                            
+                            <!-- FORM TAMBAH USER -->
+                            <div style="background: #f0f9ff; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
+                                <h4 style="margin: 0 0 12px 0; color: #0e7490; font-size: 1rem;"><i class="fas fa-user-plus"></i> Tambah User Baru</h4>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+                                    <input type="text" id="inputNama" placeholder="Nama Lengkap" style="padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.9rem;">
+                                    <input type="email" id="inputEmail" placeholder="Email" style="padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.9rem;">
+                                    <input type="password" id="inputPassword" placeholder="Password (min. 6 karakter)" style="padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.9rem;">
+                                    <select id="inputRole" style="padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.9rem;">
+                                        <option value="guru">Guru / Staf</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="kepala">Kepala Madrasah</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-primary" onclick="tambahUser()" style="margin-top: 12px; padding: 10px 20px;">
+                                    <i class="fas fa-user-plus"></i> Tambah User
                                 </button>
+                            </div>
+                            <!-- AKHIR FORM TAMBAH USER -->
+
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                                <span style="font-weight: 600; color: #475569;">Daftar Pengguna Terdaftar</span>
+                                <button class="btn btn-primary" onclick="exportUsersToExcel()"><i class="fas fa-file-excel"></i> Export ke Excel</button>
                             </div>
                             <div style="overflow-x: auto;">
                                 <table style="width: 100%; border-collapse: collapse;">
@@ -138,9 +126,7 @@
                                             <th style="padding: 12px; text-align: left; border-bottom: 2px solid #e2e8f0;">Aksi</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="adminUsersTable">
-                                        <!-- Data user akan di-render di sini -->
-                                    </tbody>
+                                    <tbody id="adminUsersTable"></tbody>
                                 </table>
                             </div>
                         </div>
@@ -157,15 +143,13 @@
                                     <option value="A">Dimensi A - Usaha Pengembangan Madrasah</option>
                                     <option value="B">Dimensi B - Pelaksanaan Tugas Manajerial</option>
                                     <option value="C">Dimensi C - Pengembangan Kewirausahaan</option>
-                                    <option value="D">Dimensi D - Supervisi Guru</option>
-                                    <option value="E">Dimensi E - Hasil Kinerja</option>
+                                    <option value="D">Dimensi D - Supervisi Guru & Tendik</option>
                                 </select>
                             </div>
-                            <div id="adminAssignmentList">
-                                <!-- Penugasan akan di-render di sini -->
-                            </div>
+                            <div id="adminAssignmentList"></div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -189,9 +173,7 @@
                         <label style="display: block; font-weight: 600; margin-bottom: 6px; color: #475569;">Password</label>
                         <input type="password" id="loginPassword" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem;" placeholder="••••••••">
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; font-size: 1rem;">
-                        <i class="fas fa-sign-in-alt"></i> Login
-                    </button>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; font-size: 1rem;"><i class="fas fa-sign-in-alt"></i> Login</button>
                 </form>
             </div>
         </div>
@@ -207,18 +189,10 @@
             <div class="modal-body">
                 <div id="modalIndikatorTitle" style="font-weight: 700; color: #0e7490; margin-bottom: 8px;"></div>
                 <div id="modalBuktiTitle" style="color: #64748b; margin-bottom: 16px;"></div>
-                
-                <!-- Upload Mode Toggle -->
                 <div style="display: flex; gap: 8px; margin-bottom: 16px;">
-                    <button id="btnModeFile" class="btn btn-primary" onclick="switchUploadMode('file')" style="flex: 1;">
-                        <i class="fas fa-file-upload"></i> Upload File
-                    </button>
-                    <button id="btnModeLink" class="btn btn-secondary" onclick="switchUploadMode('link')" style="flex: 1;">
-                        <i class="fab fa-google-drive"></i> Link Google Drive
-                    </button>
+                    <button id="btnModeFile" class="btn btn-primary" onclick="switchUploadMode('file')" style="flex: 1;"><i class="fas fa-file-upload"></i> Upload File</button>
+                    <button id="btnModeLink" class="btn btn-secondary" onclick="switchUploadMode('link')" style="flex: 1;"><i class="fab fa-google-drive"></i> Link Google Drive</button>
                 </div>
-
-                <!-- Upload File Mode -->
                 <div id="uploadModeFile">
                     <div class="file-drop-area" onclick="document.getElementById('fileInput').click()">
                         <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" onchange="handleFileSelectPreview(event)" style="display: none;">
@@ -228,8 +202,6 @@
                         <div id="fileNameDisplay" style="margin-top: 12px; font-weight: 600; color: #0891b2;"></div>
                     </div>
                 </div>
-
-                <!-- Upload Link Mode -->
                 <div id="uploadModeLink" style="display: none;">
                     <div style="background: #f0f9ff; border: 1px solid #bae6fd; padding: 12px; border-radius: 6px; margin-bottom: 16px;">
                         <i class="fas fa-info-circle"></i> <strong>Cara mendapatkan link:</strong>
@@ -241,10 +213,7 @@
                     </div>
                     <input type="url" id="driveLinkInput" placeholder="https://drive.google.com/file/d/..." style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem; margin-bottom: 16px;">
                 </div>
-
-                <button class="btn btn-primary" onclick="submitUpload()" style="width: 100%; padding: 12px; margin-top: 16px;">
-                    <i class="fas fa-save"></i> Simpan
-                </button>
+                <button class="btn btn-primary" onclick="submitUpload()" style="width: 100%; padding: 12px; margin-top: 16px;"><i class="fas fa-save"></i> Simpan</button>
             </div>
         </div>
     </div>
