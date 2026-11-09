@@ -1,13 +1,16 @@
-// PKKM Digital - MA Hasyim Asy'ari / As'adiyah Ereng-Ereng
-// Logika Penugasan Anti-Tembus (Strict Matching)
+// PKKM Digital - MA. As'adiyah Ereng-Ereng
+// Logika Penugasan Anti-Tembus (Strict Matching) - SUDAH DIPERBAIKI
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBhDGXnuMIvfr-9AXCIw1zgDuJWfCgMUyE", // Ganti dengan config proyek Anda yang benar
-  authDomain: "data-undangan-digital-9dc5a.firebaseapp.com",
-  projectId: "data-undangan-digital-9dc5a",
-  storageBucket: "data-undangan-digital-9dc5a.firebasestorage.app",
-  messagingSenderId: "765763173060",
-  appId: "1:765763173060:web:043f3f4f5d3de0e30ae791"
+  // PENTING: Pastikan ini adalah config proyek PKKM Anda (pkkm-aser-281a4), 
+  // bukan config undangan digital. Ganti jika perlu!
+  apiKey: "AIzaSyDuAGy8Ku7Jh0is5WanEIf-A12AsVi2Kho", 
+  authDomain: "pkkm-aser-281a4.firebaseapp.com",
+  projectId: "pkkm-aser-281a4",
+  storageBucket: "pkkm-aser-281a4.firebasestorage.app",
+  messagingSenderId: "17368843878",
+  appId: "1:17368843878:web:70babcedfbb0002f170fa7",
+  measurementId: "G-0T4Z0B2MXP"
 };
 
 if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
@@ -18,7 +21,7 @@ let userData = null;
 let pkkmData = [];
 let allUsers = [];
 let currentSubBuktiId = null;
-const currentTahun = '2023-2026'; // Sesuaikan dengan periode Anda
+const currentTahun = '2026/2027'; 
 
 // ═════════════════════════════════════════════
 // 1. INIT & AUTH STATE
@@ -157,23 +160,15 @@ function renderDashboard() {
                         const isAssigned = (() => {
                             if (!userData || !userData.nama || !ind.penugasan) return false;
                             
-                            // Normalisasi: huruf kecil, hapus titik/koma, rapikan spasi
                             const cleanUser = userData.nama.toLowerCase().replace(/[.,]/g, ' ').replace(/\s+/g, ' ').trim();
                             const userWords = cleanUser.split(' ');
                             
                             return ind.penugasan.some(pName => {
                                 const cleanP = pName.toLowerCase().replace(/[.,]/g, ' ').replace(/\s+/g, ' ').trim();
                                 
-                                // 1. Cocok Persis (Exact Match)
-                                // Contoh: "nur syamsi s pd" === "nur syamsi s pd"
                                 if (cleanUser === cleanP) return true;
                                 
-                                // 2. Cocok Awalan Ketat (Strict Prefix)
-                                // Contoh: user "nur syamsi" cocok dengan "nur syamsi s pd"
                                 if (cleanP.startsWith(cleanUser + ' ')) {
-                                    // PENCEGAHAN: Jika nama user hanya 1 kata (misal: "Nur"), 
-                                    // jangan izinkan tembus ke "Nur Asia", "Nur Syamsi", dll.
-                                    // Kecuali jika kata kedua di penugasan adalah gelar resmi.
                                     if (userWords.length >= 2) {
                                         return true; 
                                     } else {
@@ -243,7 +238,7 @@ function renderDashboard() {
                                                         <button disabled style="background: #e2e8f0; color: #94a3b8; padding: 5px 10px; border-radius: 5px; border: none; font-size: 0.8rem; width: 90px; cursor: not-allowed;">
                                                             <i class="fas fa-lock"></i> Kunci
                                                         </button>
-                                                    }
+                                                    `}
                                                 </div>
                                             </div>
                                         `;
@@ -558,9 +553,6 @@ window.exportUsersToExcel = function() {
     alert(`✅ Berhasil mengunduh ${allUsers.length} user!`);
 };
 
-// ══════════════════════════════════════════════
-// FUNGSI TAMBAH USER (DISESUAIKAN DENGAN INDEX.HTML ANDA)
-// ══════════════════════════════════════════════
 window.createNewUser = async function() {
     if (!checkAdminAccess()) return;
     
@@ -578,7 +570,6 @@ window.createNewUser = async function() {
         return;
     }
     
-    // PERINGATAN PENTING UNTUK ADMIN
     if (nama.split(' ').length < 2) {
         if (!confirm('⚠️ PERINGATAN: Nama user hanya 1 kata (misal: "Nur").\n\nIni BERISIKO membuat user tersebut bisa mengakses SEMUA bidang yang mengandung kata tersebut.\n\nSangat disarankan menggunakan Nama Lengkap + Gelar (contoh: "Nur Syamsi S.Pd").\n\nLanjutkan?')) {
             return;
@@ -606,7 +597,6 @@ window.createNewUser = async function() {
         
         alert(`✅ User berhasil ditambahkan!\n\nNama: ${nama}\nEmail: ${email}\nPassword: ${password}`);
         
-        // Reset form
         document.getElementById('newUserName').value = '';
         document.getElementById('newUserEmail').value = '';
         document.getElementById('newUserPassword').value = '';
