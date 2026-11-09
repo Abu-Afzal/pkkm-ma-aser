@@ -21,10 +21,11 @@ let userData = null;
 let pkkmData = [];
 let allUsers = [];
 let currentSubBuktiId = null;
-const currentTahun = '2026/2027';
+let currentTahun = localStorage.getItem('pkkm_selected_tahun') || '2026/2027';
 let uploadCache = {};
 
 document.addEventListener('DOMContentLoaded', () => {
+    loadDaftarPeriode();
     loadPKKMData();
     auth.onAuthStateChanged(user => {
         if (user) {
@@ -316,6 +317,80 @@ function updateUIForLoggedInUser() {
     document.getElementById('mainNavTabs').style.display = 'flex';
     document.getElementById('tabBtnAdmin').style.display = (userData.role === 'admin' || userData.role === 'kepala') ? 'inline-block' : 'none';
     switchMainTab('dashboard');
+}
+
+// Fungsi untuk mengganti periode/tahun ajaran aktif
+window.changeTahunAjaran = function(tahun) {
+    currentTahun = tahun;
+    localStorage.setItem('pkkm_selected_tahun', tahun);
+    
+    // Update tampilan label periode jika ada di HTML
+    var labelEl = document.getElementById('labelTahunAktif');
+    if (labelEl) labelEl.textContent = currentTahun;
+    
+    // Reload data PKKM untuk periode yang baru dipilih
+    loadPKKMData();
+};
+
+// Fungsi bagi Admin untuk menambah periode baru (misal: 2025/2026)
+window.tambahPeriodeBaru = function() {
+    if (!checkAdminAccess()) return;
+    
+    var tahunBaru = prompt('Masukkan Tahun Ajaran Baru (Contoh: 2025/2026):');
+    if (!tahunBaru) return;
+    
+    tahunBaru = tahunBaru.trim();
+    var regex = /^\d{4}\/\d{4}$/;
+    if (!regex.test(tahunBaru)) {
+        alert('Format tidak valid! Gunakan format TTTT/TTTT (Contoh: 2025/2026)');
+        return;
+    }
+    
+    // Simpan daftar periode ke Firestore agar bisa dipilih semua user
+    db.collection('pkkm_periode').doc(tahunBaru.replace('/', '_')).set({
+        tahun: tahunBaru,
+        created_at: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(function() {
+        alert('Periode ' + tahunBaru + ' berhasil ditambahkan!');
+        loadDaftarPeriode();
+        changeTahunAjaran(tahunBaru);
+    }).catch(function(err) {
+        alert('Gagal menambah periode: ' + err.message);
+    });
+};
+
+// Fungsi memuat daftar periode ke dropdown select
+function loadDaftarPeriode() {
+    db.collection('pkkm_periode').get().then(function(snapshot) {
+        var selectEl = document.getElementById('selectTahunAjaran');
+        if (!selectEl) return;
+        
+        var periodeList = [];
+        snapshot.forEach(function(doc) {
+            periodeList.push(doc.data().tahun);
+        });
+        
+        // Jika belum ada di DB, buatkan default
+        if (periodeList.length === 0) {
+            periodeList = ['2024/2025', '2025/2026', '2026/2027'];
+        }
+        
+        // Pastikan currentTahun ada di daftar
+        if (!periodeList.includes(currentTahun)) {
+            periodeList.push(currentTahun);
+        }
+        
+        // Urutkan tahun ajaran
+        periodeList.sort().reverse();
+        
+        var html = '';
+        periodeList.forEach(function(t) {
+            var selected = (t === currentTahun) ? 'selected' : '';
+            html += '<option value="' + t + '" ' + selected + '>' + t + '</option>';
+        });
+        
+        selectEl.innerHTML = html;
+    });
 }
 
 window.openLoginModal = function() { document.getElementById('loginModal').classList.add('active'); };
