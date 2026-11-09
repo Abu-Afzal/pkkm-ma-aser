@@ -667,7 +667,6 @@ window.setupDataPKKM = async function() {
         deletePromises.push(db.collection('pkkm_indikator').get().then(snapshot => Promise.all(snapshot.docs.map(doc => doc.ref.delete()))));
         await Promise.all(deletePromises);
 
-        // CONTOH DATA (Sesuaikan dengan SK sekolah Anda)
         const aspekList = [
             { kode: 'A', nama: 'Usaha Pengembangan Madrasah' },
             { kode: 'B', nama: 'Pelaksanaan Tugas Manajerial' },
@@ -686,7 +685,6 @@ window.setupDataPKKM = async function() {
         const indikatorList = [
             { aspek_id: 'aspek_A', kode: 'A.1.1.1', pertanyaan: 'Mampu mengembangkan struktur organisasi.', bukti_list: [{ id: 'A.1.1.1.1', nama: 'Bagan struktur organisasi' }], penugasan: timA },
             { aspek_id: 'aspek_B', kode: 'B.2.1.1', pertanyaan: 'Mampu mengembangkan RKJM/RKT.', bukti_list: [{ id: 'B.2.1.1.1', nama: 'Dokumen RKJM' }], penugasan: timB },
-            // ... Tambahkan indikator lainnya sesuai kebutuhan ...
         ];
         
         await Promise.all(indikatorList.map(ind => {
