@@ -149,16 +149,20 @@ function renderDashboard() {
         html += '<div class="indikator-list">';
 
         aspek.indikator.forEach(function(ind) {
-            let isAssigned = false;
-            if (userData && ind.penugasan) {
-                const userNameNorm = userData.nama.toLowerCase().replace(/[.,]/g, ' ').replace(/\s+/g, ' ').trim();
-                const userWords = userNameNorm.split(' ');
-                
-                isAssigned = ind.penugasan.some(function(penugasanNama) {
-                    const assignedNameNorm = penugasanNama.toLowerCase().replace(/[.,]/g, ' ').replace(/\s+/g, ' ').trim();
-                    const assignedWords = assignedNameNorm.split(' ');
-                    
-                    if (userNameNorm === assignedNameNorm) return true;
+            // Ganti bagian pengecekan penugasan ini di dalam renderDashboard():
+let isAssigned = false;
+if (userData && ind.penugasan) {
+    // Normalisasi nama user yang sedang login (hapus titik, koma, spasi berlebih, jadikan huruf kecil)
+    const userNameNorm = userData.nama.toLowerCase().replace(/[.,]/g, ' ').replace(/\s+/g, ' ').trim();
+    
+    isAssigned = ind.penugasan.some(function(penugasanNama) {
+        // Normalisasi nama penanggung jawab di indikator
+        const assignedNameNorm = penugasanNama.toLowerCase().replace(/[.,]/g, ' ').replace(/\s+/g, ' ').trim();
+        
+        // Wajib sama persis (termasuk gelar/kepanjangan namanya) agar tidak tertukar antar guru yang namanya mirip
+        return userNameNorm === assignedNameNorm;
+    });
+}
                     
                     const allWordsMatch = userWords.every(function(uWord) { 
                         return assignedWords.includes(uWord); 
