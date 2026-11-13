@@ -41,13 +41,13 @@
 
     <!-- Main Container -->
     <div class="container">
-        <!-- Periode Badge / Filter Multi-Tahun Ajaran -->
+        <!-- Periode Badge / Filter Periode PKKM -->
         <div id="periodeFilter" style="display: flex; gap: 12px; margin-bottom: 20px; padding: 14px 20px; background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%); border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); flex-wrap: wrap; align-items: center; justify-content: space-between;">
             <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
                 <div style="color: white; font-weight: 700; font-size: 1rem;"><i class="fas fa-calendar-alt"></i> Periode PKKM:</div>
                 <select id="selectTahunAjaran" onchange="changeTahunAjaran(this.value)" style="padding: 6px 14px; border-radius: 20px; border: none; font-weight: 700; color: #0e7490; background: white; cursor: pointer; outline: none; font-size: 0.95rem;">
                     <!-- Opsi otomatis diisi oleh JS loadDaftarPeriode() -->
-                    <option value="2026/2027">2026/2027</option>
+                    <option value="2026">2026</option>
                 </select>
             </div>
             <button id="btnTambahPeriode" onclick="tambahPeriodeBaru()" style="background: rgba(255, 255, 255, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.4); padding: 6px 14px; border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 0.85rem; display: flex; align-items: center; gap: 6px;">
@@ -91,7 +91,7 @@
                     <!-- Setup Data -->
                     <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 16px; border-radius: 8px; margin-bottom: 24px;">
                         <h3 style="margin: 0 0 8px 0; color: #92400e;"><i class="fas fa-exclamation-triangle"></i> Setup Data Awal</h3>
-                        <p style="margin: 0 0 12px 0; color: #92400e;">Klik tombol di bawah untuk mengisi database dengan <strong>95 indikator PKKM (4 Dimensi A-D)</strong> sesuai SK Tahun Pelajaran 2026/2027.</p>
+                        <p style="margin: 0 0 12px 0; color: #92400e;">Klik tombol di bawah untuk mengisi database dengan <strong>95 indikator PKKM (4 Dimensi A-D)</strong> sesuai SK Penilaian Kinerja Kepala Madrasah MA. As'adiyah Ereng-Ereng.</p>
                         <button class="btn btn-warning" onclick="setupDataPKKM()"><i class="fas fa-database"></i> Jalankan Setup Data Awal</button>
                     </div>
 

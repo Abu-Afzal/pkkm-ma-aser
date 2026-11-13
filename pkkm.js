@@ -21,7 +21,7 @@ let userData = null;
 let pkkmData = [];
 let allUsers = [];
 let currentSubBuktiId = null;
-let currentTahun = localStorage.getItem('pkkm_selected_tahun') || '2026/2027';
+let currentTahun = localStorage.getItem('pkkm_selected_tahun') || '2026';
 let uploadCache = {};
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -355,18 +355,25 @@ window.changeTahunAjaran = function(tahun) {
 window.tambahPeriodeBaru = function() {
     if (!checkAdminAccess()) return;
     
-    var tahunBaru = prompt('Masukkan Tahun Ajaran Baru (Contoh: 2025/2026):');
+    var tahunBaru = prompt('Masukkan Periode PKKM (Contoh: 2026 atau 2023-2026):');
     if (!tahunBaru) return;
     
     tahunBaru = tahunBaru.trim();
-    var regex = /^\d{4}\/\d{4}$/;
+    
+    // Regex mendukung: 
+    // - Tahun tunggal (misal: 2026)
+    // - Rentang tahun (misal: 2023-2026 atau 2023 - 2026)
+    var regex = /^(\d{4})(\s*-\s*\d{4})?$/;
     if (!regex.test(tahunBaru)) {
-        alert('Format tidak valid! Gunakan format TTTT/TTTT (Contoh: 2025/2026)');
+        alert('Format tidak valid!\nGunakan format Tahun Tunggal (Contoh: 2026) atau Rentang Tahun (Contoh: 2023-2026)');
         return;
     }
     
-    // Simpan daftar periode ke Firestore agar bisa dipilih semua user
-    db.collection('pkkm_periode').doc(tahunBaru.replace('/', '_')).set({
+    // Bersihkan spasi berlebih pada rentang tahun (misal: "2023 - 2026" menjadi "2023-2026")
+    tahunBaru = tahunBaru.replace(/\s+/g, '');
+    
+    // Simpan daftar periode ke Firestore (ID dokumen mengganti tanda '-' dengan '_')
+    db.collection('pkkm_periode').doc(tahunBaru.replace('-', '_')).set({
         tahun: tahunBaru,
         created_at: firebase.firestore.FieldValue.serverTimestamp()
     }).then(function() {
@@ -385,21 +392,29 @@ function loadDaftarPeriode() {
         if (!selectEl) return;
         
         var periodeList = [];
-        snapshot.forEach(function(doc) {
-            periodeList.push(doc.data().tahun);
-        });
         
-        // Jika belum ada di DB, buatkan default
-        if (periodeList.length === 0) {
-            periodeList = ['2024/2025', '2025/2026', '2026/2027'];
+        if (snapshot.empty) {
+            // Default periode berupa tahun kalender atau rentang tahun PKKM
+            periodeList = ['2026', '2023-2026', '2025'];
+            periodeList.forEach(function(t) {
+                db.collection('pkkm_periode').doc(t.replace('-', '_')).set({
+                    tahun: t,
+                    created_at: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            });
+        } else {
+            snapshot.forEach(function(doc) {
+                if (doc.data().tahun) {
+                    periodeList.push(doc.data().tahun);
+                }
+            });
         }
         
-        // Pastikan currentTahun ada di daftar
         if (!periodeList.includes(currentTahun)) {
             periodeList.push(currentTahun);
         }
         
-        // Urutkan tahun ajaran
+        // Urutkan periode secara descending (terbaru di atas)
         periodeList.sort().reverse();
         
         var html = '';
@@ -409,8 +424,10 @@ function loadDaftarPeriode() {
         });
         
         selectEl.innerHTML = html;
+    }).catch(function(error) {
+        console.error("Gagal memuat periode:", error);
     });
-}
+};
 
 window.openLoginModal = function() { document.getElementById('loginModal').classList.add('active'); };
 window.closeLoginModal = function() {
