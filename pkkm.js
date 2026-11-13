@@ -429,6 +429,25 @@ function loadDaftarPeriode() {
     });
 };
 
+// Fungsi bagi Admin untuk menghapus periode yang tidak diinginkan
+window.hapusPeriodeAktif = function() {
+    if (!checkAdminAccess()) return;
+    
+    var tahunAktif = currentTahun;
+    if (confirm('⚠️ Apakah Anda yakin ingin menghapus periode "' + tahunAktif + '"?\nData upload terkait pada periode ini mungkin tidak akan tampil.')) {
+        var docId = tahunAktif.replace('/', '_').replace('-', '_');
+        
+        db.collection('pkkm_periode').doc(docId).delete().then(function() {
+            alert('✅ Periode ' + tahunAktif + ' berhasil dihapus dari sistem.');
+            // Pindah ke default atau reload list
+            localStorage.removeItem('pkkm_selected_tahun');
+            location.reload();
+        }).catch(function(error) {
+            alert('❌ Gagal menghapus periode: ' + error.message);
+        });
+    }
+};
+
 window.openLoginModal = function() { document.getElementById('loginModal').classList.add('active'); };
 window.closeLoginModal = function() {
     document.getElementById('loginModal').classList.remove('active');
